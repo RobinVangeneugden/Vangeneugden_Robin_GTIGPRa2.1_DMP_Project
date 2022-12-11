@@ -13,3 +13,10 @@ C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\Vangeneugden_Robin_DMP_Project_WPF.csproj.CoreCompileInputs.cache
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\Vangeneugden_Robin_DMP_Project_WPF.exe
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\Vangeneugden_Robin_DMP_Project_WPF.pdb
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\AddBandlid.g.cs
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\AddDeleteConcert.g.cs
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\AddDeleteInstrument.g.cs
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\AddDeleteRepetite.g.cs
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\DeleteBandlid.g.cs
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\UpdateBandlid.g.cs
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\AddDeleteGroep.g.cs

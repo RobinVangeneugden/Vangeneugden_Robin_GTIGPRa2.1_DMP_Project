@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\App.xaml
-11151548125
+8739652509
 
-5-2017746502
+12-82504364
 13-1505183044
-MainWindow.xaml;
+AddBandlid.xaml;AddDeleteConcert.xaml;AddDeleteGroep.xaml;AddDeleteInstrument.xaml;AddDeleteRepetite.xaml;DeleteBandlid.xaml;MainWindow.xaml;UpdateBandlid.xaml;
 
-False
+True
 

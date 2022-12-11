@@ -13,6 +13,7 @@
     </Window.Resources>
     
     <Grid Background="#AD9963">
+        <!--Voeg rijen toe-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -20,6 +21,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
+        <!--Voeg kolommen toe-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -45,7 +48,6 @@
         <Button Content="Add/Delete Concert" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="2"/>
 
         <!--Rij5 -->
-
         <Label Background="White" Margin="15" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
     </Grid>
     

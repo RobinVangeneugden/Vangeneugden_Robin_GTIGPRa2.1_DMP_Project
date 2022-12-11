@@ -24,5 +24,11 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             InitializeComponent();
         }
+
+        private void BtnAddDeleteGroep_Click(object sender, RoutedEventArgs e)
+        {
+            AddDeleteGroep GroepWindow = new AddDeleteGroep();
+            GroepWindow.ShowDialog();
+        }
     }
 }
