@@ -30,5 +30,40 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             AddDeleteGroep GroepWindow = new AddDeleteGroep();
             GroepWindow.ShowDialog();
         }
+
+        private void BtnAddDeleteConcert_Click(object sender, RoutedEventArgs e)
+        {
+            AddDeleteConcert ConcertWindow = new AddDeleteConcert();
+            ConcertWindow.ShowDialog();
+        }
+
+        private void BtnAddDeleteRepetitie_Click(object sender, RoutedEventArgs e)
+        {
+            AddDeleteRepetite RepetitieWindow = new AddDeleteRepetite();
+            RepetitieWindow.ShowDialog();
+        }
+
+        private void BtnAddDeleteInstrument_Click(object sender, RoutedEventArgs e)
+        {
+            AddDeleteInstrument InstrumentWindow = new AddDeleteInstrument();
+            InstrumentWindow.ShowDialog();
+        }
+
+        private void BtnVerwijderBandlid_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void BtnPasGegevensAan_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateBandlid UpdateGegevensWindow = new UpdateBandlid();
+            UpdateGegevensWindow.ShowDialog();
+        }
+
+        private void BtnVoegBandlidToe_Click(object sender, RoutedEventArgs e)
+        {
+            AddBandlid BandlidToevoegenWindow = new AddBandlid();
+            BandlidToevoegenWindow.ShowDialog();
+        }
     }
 }

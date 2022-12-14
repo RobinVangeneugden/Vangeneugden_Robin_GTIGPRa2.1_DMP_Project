@@ -31,24 +31,24 @@
         
         <!--Rij1 -->
         <Label Content="Selecteer Bandlid:" Margin="15" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
-        <ComboBox Margin="12" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cmbBandlid" Margin="12" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
         <!--Rij2 -->
-        <Button Content="Toon info" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
-        <Button Content="Add/Delete Groep" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="btnToonInfo" Content="Toon info" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
+        <Button x:Name="BtnAddDeleteGroep" Content="Add/Delete Groep" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Click="BtnAddDeleteGroep_Click"/>
         
         <!--Rij3 -->
-        <Button Content="Voeg Bandlid Toe" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="2" Grid.Column="0"/>
-        <Button Content="Pas Gegevens Lid Aan" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="2" Grid.Column="1"/>
-        <Button Content="Verwijder Bandlid" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="2" Grid.Column="2"/>
+        <Button x:Name="btnVoegBandlidToe" Content="Voeg Bandlid Toe" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Click="BtnVoegBandlidToe_Click"/>
+        <Button x:Name="btnPasGegevensAan" Content="Pas Gegevens Lid Aan" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="2" Grid.Column="1" Click="BtnPasGegevensAan_Click"/>
+        <Button x:Name="btnVerwijderBandlid" Content="Verwijder Bandlid" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="2" Grid.Column="2" Click="BtnVerwijderBandlid_Click"/>
 
         <!--Rij4 -->
-        <Button Content="Add/Delete Instrument" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="0"/>
-        <Button Content="Add/Delete Repetitie" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="1"/>
-        <Button Content="Add/Delete Concert" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="2"/>
+        <Button x:Name="btnAddDeleteInstrument" Content="Add/Delete Instrument" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="0" Click="BtnAddDeleteInstrument_Click"/>
+        <Button x:Name="btnAddDeleteRepetitie" Content="Add/Delete Repetitie" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="1" Click="BtnAddDeleteRepetitie_Click"/>
+        <Button x:Name="btnAddDeleteConcert" Content="Add/Delete Concert" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="2" Click="BtnAddDeleteConcert_Click"/>
 
         <!--Rij5 -->
-        <Label Background="White" Margin="15" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <Label x:Name="lblToonInfo" Background="White" Margin="15" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
     </Grid>
     
     

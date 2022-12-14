@@ -18,7 +18,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
     /// <summary>
     /// Interaction logic for AddBandlid.xaml
     /// </summary>
-    public partial class AddBandlid : Page
+    public partial class AddBandlid : Window
     {
         public AddBandlid()
         {

@@ -18,7 +18,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
     /// <summary>
     /// Interaction logic for AddDeleteInstrument.xaml
     /// </summary>
-    public partial class AddDeleteInstrument : Page
+    public partial class AddDeleteInstrument : Window
     {
         public AddDeleteInstrument()
         {

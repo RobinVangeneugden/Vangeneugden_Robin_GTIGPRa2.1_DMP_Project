@@ -18,7 +18,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
     /// <summary>
     /// Interaction logic for UpdateBandlid.xaml
     /// </summary>
-    public partial class UpdateBandlid : Page
+    public partial class UpdateBandlid : Window
     {
         public UpdateBandlid()
         {

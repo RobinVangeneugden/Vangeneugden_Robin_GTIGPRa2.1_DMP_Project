@@ -18,7 +18,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
     /// <summary>
     /// Interaction logic for AddDeleteRepetite.xaml
     /// </summary>
-    public partial class AddDeleteRepetite : Page
+    public partial class AddDeleteRepetite : Window
     {
         public AddDeleteRepetite()
         {

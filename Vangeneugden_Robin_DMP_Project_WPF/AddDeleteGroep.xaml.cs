@@ -18,7 +18,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
     /// <summary>
     /// Interaction logic for AddDeleteGroep.xaml
     /// </summary>
-    public partial class AddDeleteGroep : UserControl
+    public partial class AddDeleteGroep : Window
     {
         public AddDeleteGroep()
         {

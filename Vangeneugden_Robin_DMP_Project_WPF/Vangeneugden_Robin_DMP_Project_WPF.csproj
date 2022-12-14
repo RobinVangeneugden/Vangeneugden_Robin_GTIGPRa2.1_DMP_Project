@@ -64,9 +64,6 @@
     <Compile Include="AddDeleteRepetite.xaml.cs">
       <DependentUpon>AddDeleteRepetite.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeleteBandlid.xaml.cs">
-      <DependentUpon>DeleteBandlid.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UpdateBandlid.xaml.cs">
       <DependentUpon>UpdateBandlid.xaml</DependentUpon>
     </Compile>
@@ -87,10 +84,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddDeleteRepetite.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DeleteBandlid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

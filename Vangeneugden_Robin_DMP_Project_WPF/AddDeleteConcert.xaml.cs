@@ -18,7 +18,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
     /// <summary>
     /// Interaction logic for AddDeleteConcert.xaml
     /// </summary>
-    public partial class AddDeleteConcert : Page
+    public partial class AddDeleteConcert : Window
     {
         public AddDeleteConcert()
         {
