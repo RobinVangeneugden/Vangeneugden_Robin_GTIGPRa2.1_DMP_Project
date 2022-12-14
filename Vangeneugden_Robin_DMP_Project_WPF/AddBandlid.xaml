@@ -16,23 +16,58 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
         <!--Rij1 -->
-        <Label x:Name="lblBandlid" Content="Bandlid" HorizontalContentAlignment="Center" Margin="15 15 15 0" Foreground="White" Background="#2F585E" FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
-        <Label x:Name="lblGroepen" Content="Groepen" HorizontalContentAlignment="Center" Margin="15 15 15 0" Foreground="White" Background="#2F585E" FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="2"/>
+        <Label Content="Voornaam" Margin="15"   Grid.Row="0" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtVoornaam" Margin="10" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+        <Label Content="Familienaam" Margin="15" Grid.Row="0" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtFamilienaam" Margin="10" Width="250" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3"/>
 
         <!--Rij2-->
-        <Button x:Name="btnAdd" Content="Add" Foreground="white" Background="#2F585E" FontWeight="Bold" Margin="10 100 10 15" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="btnDelete" Content="Delete" Foreground="white" Background="#2F585E" FontWeight="Bold" Margin="10 15 10 15" Grid.Row="2" Grid.Column="1"/>
-        <ListBox x:Name="lbBandlid" Background="White" Margin="15 0 15 15" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3"/>
-        <ListBox x:Name="lbGroepen" Background="white" Margin="15 0 15 15" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3"/>
+        <Label Content="Rijksregisternr" Margin="15"   Grid.Row="1" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtRijksregnr" Margin="10" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Geslacht" Margin="15" Grid.Row="1" Grid.Column="2"/>
+        <CheckBox x:Name="cbMan" Content="M" Margin="15" Grid.Row="1" Grid.Column="3"/>
+        <CheckBox x:Name="cbVrouw" Content="V" Margin="15" Grid.Row="1" Grid.Column="4"/>
+        <CheckBox x:Name="cbNeutraal" Content="X" Margin="15" Grid.Row="1" Grid.Column="5"/>
+
+        <!--Rij3-->
+        <Label Content="Straat" Margin="15"   Grid.Row="2" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtStraat" Margin="10" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Huisnummer" Margin="15" Grid.Row="2" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtHuisnummer" Margin="10" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+
+        <!--Rij4-->
+        <Label Content="Postcode" Margin="15"   Grid.Row="3" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtPostcode" Margin="10" Width="125" VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1"/>
+        <Label Content="Gemeente" Margin="15" Grid.Row="3" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtGemeente" Margin="10" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"/>
+
+        <!--Rij5-->
+        <Label Content="Land" Margin="15"   Grid.Row="4" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtLand" Margin="10" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+
+        <!--Rij6-->
+        <Label Content="Telefoonnr" Margin="15"   Grid.Row="5" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtTelefoonnr" Margin="10" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="1"/>
+        <Label Content="Email" Margin="15" Grid.Row="5" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtEmail" Margin="10" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"/>
+        
+        <!--Rij7-->
+        <Button x:Name="btnAddBandlid" Content="Voeg Toe" Foreground="White" Background="#2F585E" Margin="100 15 15 15" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
