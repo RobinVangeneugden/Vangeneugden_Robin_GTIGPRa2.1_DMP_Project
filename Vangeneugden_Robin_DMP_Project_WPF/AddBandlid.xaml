@@ -67,7 +67,7 @@
         <TextBox Background="White" x:Name="txtEmail" Margin="10" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"/>
         
         <!--Rij7-->
-        <Button x:Name="btnAddBandlid" Content="Voeg Toe" Foreground="White" Background="#2F585E" Margin="100 15 15 15" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnVoegToe" Content="Voeg Toe" Foreground="White" Background="#2F585E" Margin="100 15 15 15" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnVoegToe_Click"/>
 
     </Grid>
 </Window>

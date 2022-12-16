@@ -24,5 +24,10 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             InitializeComponent();
         }
+
+        private void BtnPasAan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
