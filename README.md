@@ -6,3 +6,4 @@
 <p>Fourth Commit: Design formulier AddBandlid & UpdateBandlid</p>
 <p>Fifth Commit: Add Local DB & Create Models & Create DAL"</p>
 <p>Sixth Commit: Aanpassen Local DB</p>
+<p>Seventh Commit: DAL models aanmaken</p>
