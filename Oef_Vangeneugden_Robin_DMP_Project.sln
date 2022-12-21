@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32929.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vangeneugden_Robin_DMP_Project_WPF", "Vangeneugden_Robin_DMP_Project_WPF\Vangeneugden_Robin_DMP_Project_WPF.csproj", "{EDC2EEAD-4C44-4B46-B87D-8EB182EF37DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vangeneugden_Robin_DMP_Project_Models", "Vangeneugden_Robin_DMP_Project_Models\Vangeneugden_Robin_DMP_Project_Models.csproj", "{FEDBC385-3E97-49D5-A7D1-3186839BA4AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vangeneugden_Robin_DMP_Project_DAL", "Vangeneugden_Robin_DMP_Project_DAL\Vangeneugden_Robin_DMP_Project_DAL.csproj", "{1C9A4FEA-0D2F-4538-91F4-B00CA547E2B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EDC2EEAD-4C44-4B46-B87D-8EB182EF37DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC2EEAD-4C44-4B46-B87D-8EB182EF37DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC2EEAD-4C44-4B46-B87D-8EB182EF37DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEDBC385-3E97-49D5-A7D1-3186839BA4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEDBC385-3E97-49D5-A7D1-3186839BA4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEDBC385-3E97-49D5-A7D1-3186839BA4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEDBC385-3E97-49D5-A7D1-3186839BA4AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9A4FEA-0D2F-4538-91F4-B00CA547E2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9A4FEA-0D2F-4538-91F4-B00CA547E2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9A4FEA-0D2F-4538-91F4-B00CA547E2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9A4FEA-0D2F-4538-91F4-B00CA547E2B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

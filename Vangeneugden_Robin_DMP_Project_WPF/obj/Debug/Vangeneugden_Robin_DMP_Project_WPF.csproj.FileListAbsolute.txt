@@ -25,3 +25,6 @@ C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\AddDeleteInstrument.baml
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\AddDeleteRepetite.baml
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\UpdateBandlid.baml
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\Dapper.dll
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\Dapper.xml
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\Vangeneugden_Robin_DMP_Project_WPF.csproj.CopyComplete
