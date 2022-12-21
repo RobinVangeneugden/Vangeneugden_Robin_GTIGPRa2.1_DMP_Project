@@ -1,0 +1,750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MuziekbandModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Groep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="externeGroep" Type="bit" Nullable="false" />
+          <Property Name="dirigentId" Type="int" />
+        </EntityType>
+        <EntityType Name="GroepOptreden">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="groepId" Type="int" Nullable="false" />
+          <Property Name="optredenId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroepRepetitie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="groepId" Type="int" Nullable="false" />
+          <Property Name="repetitieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instrument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="artikelNummer" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="soort" Type="varchar" MaxLength="25" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="100" />
+          <Property Name="bouwjaar" Type="date" />
+        </EntityType>
+        <EntityType Name="Lid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="voornaam" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="familienaam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="geslacht" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="straat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="huisnummer" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="postcode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="gemeente" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="land" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="rijksregisternr" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="inschrijvingsDatum" Type="date" Nullable="false" />
+          <Property Name="telefoon" Type="varchar" MaxLength="25" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LidGroep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lidId" Type="int" Nullable="false" />
+          <Property Name="groepId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LidInstrument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lidId" Type="int" Nullable="false" />
+          <Property Name="instrumentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locatie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="50" />
+          <Property Name="straat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="huisnummer" Type="varchar" MaxLength="5" />
+          <Property Name="postcode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="gemeente" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="land" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Optreden">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="locatieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repetitie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="locatieId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Groep_Dirigent">
+          <End Role="Lid" Type="Self.Lid" Multiplicity="0..1" />
+          <End Role="Groep" Type="Self.Groep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Groep">
+              <PropertyRef Name="dirigentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepOptreden_Groep">
+          <End Role="Groep" Type="Self.Groep" Multiplicity="1" />
+          <End Role="GroepOptreden" Type="Self.GroepOptreden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groep">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepOptreden">
+              <PropertyRef Name="groepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepOptreden_Optreden">
+          <End Role="Optreden" Type="Self.Optreden" Multiplicity="1" />
+          <End Role="GroepOptreden" Type="Self.GroepOptreden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Optreden">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepOptreden">
+              <PropertyRef Name="optredenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepRepetitie_Groep">
+          <End Role="Groep" Type="Self.Groep" Multiplicity="1" />
+          <End Role="GroepRepetitie" Type="Self.GroepRepetitie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groep">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepRepetitie">
+              <PropertyRef Name="groepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepRepetitie_Repetitie">
+          <End Role="Repetitie" Type="Self.Repetitie" Multiplicity="1" />
+          <End Role="GroepRepetitie" Type="Self.GroepRepetitie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repetitie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepRepetitie">
+              <PropertyRef Name="repetitieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidGroep_Groep">
+          <End Role="Groep" Type="Self.Groep" Multiplicity="1" />
+          <End Role="LidGroep" Type="Self.LidGroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groep">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidGroep">
+              <PropertyRef Name="groepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidGroep_Lid">
+          <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+          <End Role="LidGroep" Type="Self.LidGroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidGroep">
+              <PropertyRef Name="lidId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidInstrument_Instrument">
+          <End Role="Instrument" Type="Self.Instrument" Multiplicity="1" />
+          <End Role="LidInstrument" Type="Self.LidInstrument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instrument">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidInstrument">
+              <PropertyRef Name="instrumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidInstrument_Lid">
+          <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+          <End Role="LidInstrument" Type="Self.LidInstrument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidInstrument">
+              <PropertyRef Name="lidId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Optreden_Locatie">
+          <End Role="Locatie" Type="Self.Locatie" Multiplicity="1" />
+          <End Role="Optreden" Type="Self.Optreden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locatie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Optreden">
+              <PropertyRef Name="locatieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repetitie_Locatie">
+          <End Role="Locatie" Type="Self.Locatie" Multiplicity="1" />
+          <End Role="Repetitie" Type="Self.Repetitie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locatie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Repetitie">
+              <PropertyRef Name="locatieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MuziekbandModelStoreContainer">
+          <EntitySet Name="Groep" EntityType="Self.Groep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroepOptreden" EntityType="Self.GroepOptreden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroepRepetitie" EntityType="Self.GroepRepetitie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instrument" EntityType="Self.Instrument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lid" EntityType="Self.Lid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LidGroep" EntityType="Self.LidGroep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LidInstrument" EntityType="Self.LidInstrument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locatie" EntityType="Self.Locatie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Optreden" EntityType="Self.Optreden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repetitie" EntityType="Self.Repetitie" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Groep_Dirigent" Association="Self.FK_Groep_Dirigent">
+            <End Role="Lid" EntitySet="Lid" />
+            <End Role="Groep" EntitySet="Groep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepOptreden_Groep" Association="Self.FK_GroepOptreden_Groep">
+            <End Role="Groep" EntitySet="Groep" />
+            <End Role="GroepOptreden" EntitySet="GroepOptreden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepOptreden_Optreden" Association="Self.FK_GroepOptreden_Optreden">
+            <End Role="Optreden" EntitySet="Optreden" />
+            <End Role="GroepOptreden" EntitySet="GroepOptreden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepRepetitie_Groep" Association="Self.FK_GroepRepetitie_Groep">
+            <End Role="Groep" EntitySet="Groep" />
+            <End Role="GroepRepetitie" EntitySet="GroepRepetitie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepRepetitie_Repetitie" Association="Self.FK_GroepRepetitie_Repetitie">
+            <End Role="Repetitie" EntitySet="Repetitie" />
+            <End Role="GroepRepetitie" EntitySet="GroepRepetitie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidGroep_Groep" Association="Self.FK_LidGroep_Groep">
+            <End Role="Groep" EntitySet="Groep" />
+            <End Role="LidGroep" EntitySet="LidGroep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidGroep_Lid" Association="Self.FK_LidGroep_Lid">
+            <End Role="Lid" EntitySet="Lid" />
+            <End Role="LidGroep" EntitySet="LidGroep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidInstrument_Instrument" Association="Self.FK_LidInstrument_Instrument">
+            <End Role="Instrument" EntitySet="Instrument" />
+            <End Role="LidInstrument" EntitySet="LidInstrument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidInstrument_Lid" Association="Self.FK_LidInstrument_Lid">
+            <End Role="Lid" EntitySet="Lid" />
+            <End Role="LidInstrument" EntitySet="LidInstrument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Optreden_Locatie" Association="Self.FK_Optreden_Locatie">
+            <End Role="Locatie" EntitySet="Locatie" />
+            <End Role="Optreden" EntitySet="Optreden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repetitie_Locatie" Association="Self.FK_Repetitie_Locatie">
+            <End Role="Locatie" EntitySet="Locatie" />
+            <End Role="Repetitie" EntitySet="Repetitie" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MuziekbandModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Groep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="externeGroep" Type="Boolean" Nullable="false" />
+          <Property Name="dirigentId" Type="Int32" />
+          <NavigationProperty Name="Lid" Relationship="Self.FK_Groep_Dirigent" FromRole="Groep" ToRole="Lid" />
+          <NavigationProperty Name="GroepOptreden" Relationship="Self.FK_GroepOptreden_Groep" FromRole="Groep" ToRole="GroepOptreden" />
+          <NavigationProperty Name="GroepRepetitie" Relationship="Self.FK_GroepRepetitie_Groep" FromRole="Groep" ToRole="GroepRepetitie" />
+          <NavigationProperty Name="LidGroep" Relationship="Self.FK_LidGroep_Groep" FromRole="Groep" ToRole="LidGroep" />
+        </EntityType>
+        <EntityType Name="GroepOptreden">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groepId" Type="Int32" Nullable="false" />
+          <Property Name="optredenId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Groep" Relationship="Self.FK_GroepOptreden_Groep" FromRole="GroepOptreden" ToRole="Groep" />
+          <NavigationProperty Name="Optreden" Relationship="Self.FK_GroepOptreden_Optreden" FromRole="GroepOptreden" ToRole="Optreden" />
+        </EntityType>
+        <EntityType Name="GroepRepetitie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groepId" Type="Int32" Nullable="false" />
+          <Property Name="repetitieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Groep" Relationship="Self.FK_GroepRepetitie_Groep" FromRole="GroepRepetitie" ToRole="Groep" />
+          <NavigationProperty Name="Repetitie" Relationship="Self.FK_GroepRepetitie_Repetitie" FromRole="GroepRepetitie" ToRole="Repetitie" />
+        </EntityType>
+        <EntityType Name="Instrument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="artikelNummer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="naam" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soort" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="bouwjaar" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="LidInstrument" Relationship="Self.FK_LidInstrument_Instrument" FromRole="Instrument" ToRole="LidInstrument" />
+        </EntityType>
+        <EntityType Name="Lid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="voornaam" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="familienaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="geslacht" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="straat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="huisnummer" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gemeente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="land" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rijksregisternr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inschrijvingsDatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="telefoon" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Groep" Relationship="Self.FK_Groep_Dirigent" FromRole="Lid" ToRole="Groep" />
+          <NavigationProperty Name="LidGroep" Relationship="Self.FK_LidGroep_Lid" FromRole="Lid" ToRole="LidGroep" />
+          <NavigationProperty Name="LidInstrument" Relationship="Self.FK_LidInstrument_Lid" FromRole="Lid" ToRole="LidInstrument" />
+        </EntityType>
+        <EntityType Name="LidGroep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lidId" Type="Int32" Nullable="false" />
+          <Property Name="groepId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Groep" Relationship="Self.FK_LidGroep_Groep" FromRole="LidGroep" ToRole="Groep" />
+          <NavigationProperty Name="Lid" Relationship="Self.FK_LidGroep_Lid" FromRole="LidGroep" ToRole="Lid" />
+        </EntityType>
+        <EntityType Name="LidInstrument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lidId" Type="Int32" Nullable="false" />
+          <Property Name="instrumentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Instrument" Relationship="Self.FK_LidInstrument_Instrument" FromRole="LidInstrument" ToRole="Instrument" />
+          <NavigationProperty Name="Lid" Relationship="Self.FK_LidInstrument_Lid" FromRole="LidInstrument" ToRole="Lid" />
+        </EntityType>
+        <EntityType Name="Locatie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="straat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="huisnummer" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="postcode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gemeente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="land" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Optreden" Relationship="Self.FK_Optreden_Locatie" FromRole="Locatie" ToRole="Optreden" />
+          <NavigationProperty Name="Repetitie" Relationship="Self.FK_Repetitie_Locatie" FromRole="Locatie" ToRole="Repetitie" />
+        </EntityType>
+        <EntityType Name="Optreden">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="omschrijving" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="locatieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GroepOptreden" Relationship="Self.FK_GroepOptreden_Optreden" FromRole="Optreden" ToRole="GroepOptreden" />
+          <NavigationProperty Name="Locatie" Relationship="Self.FK_Optreden_Locatie" FromRole="Optreden" ToRole="Locatie" />
+        </EntityType>
+        <EntityType Name="Repetitie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="locatieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GroepRepetitie" Relationship="Self.FK_GroepRepetitie_Repetitie" FromRole="Repetitie" ToRole="GroepRepetitie" />
+          <NavigationProperty Name="Locatie" Relationship="Self.FK_Repetitie_Locatie" FromRole="Repetitie" ToRole="Locatie" />
+        </EntityType>
+        <Association Name="FK_Groep_Dirigent">
+          <End Role="Lid" Type="Self.Lid" Multiplicity="0..1" />
+          <End Role="Groep" Type="Self.Groep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Groep">
+              <PropertyRef Name="dirigentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepOptreden_Groep">
+          <End Role="Groep" Type="Self.Groep" Multiplicity="1" />
+          <End Role="GroepOptreden" Type="Self.GroepOptreden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groep">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepOptreden">
+              <PropertyRef Name="groepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepRepetitie_Groep">
+          <End Role="Groep" Type="Self.Groep" Multiplicity="1" />
+          <End Role="GroepRepetitie" Type="Self.GroepRepetitie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groep">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepRepetitie">
+              <PropertyRef Name="groepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidGroep_Groep">
+          <End Role="Groep" Type="Self.Groep" Multiplicity="1" />
+          <End Role="LidGroep" Type="Self.LidGroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groep">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidGroep">
+              <PropertyRef Name="groepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepOptreden_Optreden">
+          <End Role="Optreden" Type="Self.Optreden" Multiplicity="1" />
+          <End Role="GroepOptreden" Type="Self.GroepOptreden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Optreden">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepOptreden">
+              <PropertyRef Name="optredenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroepRepetitie_Repetitie">
+          <End Role="Repetitie" Type="Self.Repetitie" Multiplicity="1" />
+          <End Role="GroepRepetitie" Type="Self.GroepRepetitie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repetitie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GroepRepetitie">
+              <PropertyRef Name="repetitieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidInstrument_Instrument">
+          <End Role="Instrument" Type="Self.Instrument" Multiplicity="1" />
+          <End Role="LidInstrument" Type="Self.LidInstrument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instrument">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidInstrument">
+              <PropertyRef Name="instrumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidGroep_Lid">
+          <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+          <End Role="LidGroep" Type="Self.LidGroep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidGroep">
+              <PropertyRef Name="lidId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LidInstrument_Lid">
+          <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+          <End Role="LidInstrument" Type="Self.LidInstrument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LidInstrument">
+              <PropertyRef Name="lidId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Optreden_Locatie">
+          <End Role="Locatie" Type="Self.Locatie" Multiplicity="1" />
+          <End Role="Optreden" Type="Self.Optreden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locatie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Optreden">
+              <PropertyRef Name="locatieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repetitie_Locatie">
+          <End Role="Locatie" Type="Self.Locatie" Multiplicity="1" />
+          <End Role="Repetitie" Type="Self.Repetitie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locatie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Repetitie">
+              <PropertyRef Name="locatieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MuziekbandEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Groep" EntityType="Self.Groep" />
+          <EntitySet Name="GroepOptreden" EntityType="Self.GroepOptreden" />
+          <EntitySet Name="GroepRepetitie" EntityType="Self.GroepRepetitie" />
+          <EntitySet Name="Instrument" EntityType="Self.Instrument" />
+          <EntitySet Name="Lid" EntityType="Self.Lid" />
+          <EntitySet Name="LidGroep" EntityType="Self.LidGroep" />
+          <EntitySet Name="LidInstrument" EntityType="Self.LidInstrument" />
+          <EntitySet Name="Locatie" EntityType="Self.Locatie" />
+          <EntitySet Name="Optreden" EntityType="Self.Optreden" />
+          <EntitySet Name="Repetitie" EntityType="Self.Repetitie" />
+          <AssociationSet Name="FK_Groep_Dirigent" Association="Self.FK_Groep_Dirigent">
+            <End Role="Lid" EntitySet="Lid" />
+            <End Role="Groep" EntitySet="Groep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepOptreden_Groep" Association="Self.FK_GroepOptreden_Groep">
+            <End Role="Groep" EntitySet="Groep" />
+            <End Role="GroepOptreden" EntitySet="GroepOptreden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepRepetitie_Groep" Association="Self.FK_GroepRepetitie_Groep">
+            <End Role="Groep" EntitySet="Groep" />
+            <End Role="GroepRepetitie" EntitySet="GroepRepetitie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidGroep_Groep" Association="Self.FK_LidGroep_Groep">
+            <End Role="Groep" EntitySet="Groep" />
+            <End Role="LidGroep" EntitySet="LidGroep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepOptreden_Optreden" Association="Self.FK_GroepOptreden_Optreden">
+            <End Role="Optreden" EntitySet="Optreden" />
+            <End Role="GroepOptreden" EntitySet="GroepOptreden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroepRepetitie_Repetitie" Association="Self.FK_GroepRepetitie_Repetitie">
+            <End Role="Repetitie" EntitySet="Repetitie" />
+            <End Role="GroepRepetitie" EntitySet="GroepRepetitie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidInstrument_Instrument" Association="Self.FK_LidInstrument_Instrument">
+            <End Role="Instrument" EntitySet="Instrument" />
+            <End Role="LidInstrument" EntitySet="LidInstrument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidGroep_Lid" Association="Self.FK_LidGroep_Lid">
+            <End Role="Lid" EntitySet="Lid" />
+            <End Role="LidGroep" EntitySet="LidGroep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LidInstrument_Lid" Association="Self.FK_LidInstrument_Lid">
+            <End Role="Lid" EntitySet="Lid" />
+            <End Role="LidInstrument" EntitySet="LidInstrument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Optreden_Locatie" Association="Self.FK_Optreden_Locatie">
+            <End Role="Locatie" EntitySet="Locatie" />
+            <End Role="Optreden" EntitySet="Optreden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repetitie_Locatie" Association="Self.FK_Repetitie_Locatie">
+            <End Role="Locatie" EntitySet="Locatie" />
+            <End Role="Repetitie" EntitySet="Repetitie" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MuziekbandModelStoreContainer" CdmEntityContainer="MuziekbandEntities">
+          <EntitySetMapping Name="Groep">
+            <EntityTypeMapping TypeName="MuziekbandModel.Groep">
+              <MappingFragment StoreEntitySet="Groep">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+                <ScalarProperty Name="externeGroep" ColumnName="externeGroep" />
+                <ScalarProperty Name="dirigentId" ColumnName="dirigentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroepOptreden">
+            <EntityTypeMapping TypeName="MuziekbandModel.GroepOptreden">
+              <MappingFragment StoreEntitySet="GroepOptreden">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="groepId" ColumnName="groepId" />
+                <ScalarProperty Name="optredenId" ColumnName="optredenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroepRepetitie">
+            <EntityTypeMapping TypeName="MuziekbandModel.GroepRepetitie">
+              <MappingFragment StoreEntitySet="GroepRepetitie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="groepId" ColumnName="groepId" />
+                <ScalarProperty Name="repetitieId" ColumnName="repetitieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instrument">
+            <EntityTypeMapping TypeName="MuziekbandModel.Instrument">
+              <MappingFragment StoreEntitySet="Instrument">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="artikelNummer" ColumnName="artikelNummer" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="soort" ColumnName="soort" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+                <ScalarProperty Name="bouwjaar" ColumnName="bouwjaar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lid">
+            <EntityTypeMapping TypeName="MuziekbandModel.Lid">
+              <MappingFragment StoreEntitySet="Lid">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+                <ScalarProperty Name="familienaam" ColumnName="familienaam" />
+                <ScalarProperty Name="geslacht" ColumnName="geslacht" />
+                <ScalarProperty Name="straat" ColumnName="straat" />
+                <ScalarProperty Name="huisnummer" ColumnName="huisnummer" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="gemeente" ColumnName="gemeente" />
+                <ScalarProperty Name="land" ColumnName="land" />
+                <ScalarProperty Name="rijksregisternr" ColumnName="rijksregisternr" />
+                <ScalarProperty Name="inschrijvingsDatum" ColumnName="inschrijvingsDatum" />
+                <ScalarProperty Name="telefoon" ColumnName="telefoon" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LidGroep">
+            <EntityTypeMapping TypeName="MuziekbandModel.LidGroep">
+              <MappingFragment StoreEntitySet="LidGroep">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lidId" ColumnName="lidId" />
+                <ScalarProperty Name="groepId" ColumnName="groepId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LidInstrument">
+            <EntityTypeMapping TypeName="MuziekbandModel.LidInstrument">
+              <MappingFragment StoreEntitySet="LidInstrument">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lidId" ColumnName="lidId" />
+                <ScalarProperty Name="instrumentId" ColumnName="instrumentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locatie">
+            <EntityTypeMapping TypeName="MuziekbandModel.Locatie">
+              <MappingFragment StoreEntitySet="Locatie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+                <ScalarProperty Name="straat" ColumnName="straat" />
+                <ScalarProperty Name="huisnummer" ColumnName="huisnummer" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="gemeente" ColumnName="gemeente" />
+                <ScalarProperty Name="land" ColumnName="land" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Optreden">
+            <EntityTypeMapping TypeName="MuziekbandModel.Optreden">
+              <MappingFragment StoreEntitySet="Optreden">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+                <ScalarProperty Name="locatieId" ColumnName="locatieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repetitie">
+            <EntityTypeMapping TypeName="MuziekbandModel.Repetitie">
+              <MappingFragment StoreEntitySet="Repetitie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+                <ScalarProperty Name="locatieId" ColumnName="locatieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
