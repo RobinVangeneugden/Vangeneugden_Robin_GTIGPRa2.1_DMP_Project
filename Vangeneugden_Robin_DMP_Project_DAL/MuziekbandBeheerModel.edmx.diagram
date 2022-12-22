@@ -4,28 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f665175fb62b418d973320ee744e99a7" Name="Diagram1">
-        <EntityTypeShape EntityType="MuziekbandModel.Groep" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.GroepOptreden" Width="1.5" PointX="9.125" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.GroepRepetitie" Width="1.5" PointX="6.875" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.Instrument" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.Lid" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.LidGroep" Width="1.5" PointX="5.375" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.LidInstrument" Width="1.5" PointX="5.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.Locatie" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.Optreden" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuziekbandModel.Repetitie" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
-        <AssociationConnector Association="MuziekbandModel.FK_Groep_Dirigent" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_GroepOptreden_Groep" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_GroepRepetitie_Groep" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_LidGroep_Groep" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_GroepOptreden_Optreden" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_GroepRepetitie_Repetitie" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_LidInstrument_Instrument" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_LidGroep_Lid" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_LidInstrument_Lid" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_Optreden_Locatie" ManuallyRouted="false" />
-        <AssociationConnector Association="MuziekbandModel.FK_Repetitie_Locatie" ManuallyRouted="false" />
+      <Diagram DiagramId="92b6e426763a4870af89ca00a63324d3" Name="Diagram1">
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.Groep" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.GroepOptreden" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.GroepRepetitie" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.Instrument" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.Lid" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.LidGroep" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.LidInstrument" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.Locatie" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.Optreden" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuziekbandbeheerModel.Repetitie" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_Groep_Dirigent" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_GroepOptreden_Groep" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_GroepRepetitie_Groep" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_LidGroep_Groep" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_GroepOptreden_Optreden" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_GroepRepetitie_Repetitie" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_LidInstrument_Instrument" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_LidGroep_Lid" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_LidInstrument_Lid" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_Optreden_Locatie" ManuallyRouted="false" />
+        <AssociationConnector Association="MuziekbandbeheerModel.FK_Repetitie_Locatie" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

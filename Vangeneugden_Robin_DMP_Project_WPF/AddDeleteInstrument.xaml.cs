@@ -20,9 +20,18 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
     /// </summary>
     public partial class AddDeleteInstrument : Window
     {
-        public AddDeleteInstrument()
+        private readonly MainWindow _mainWindow;
+        private int _lidID;
+        public AddDeleteInstrument(MainWindow mainWindow, int lidID)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+            _lidID = lidID;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            lblBandlid.Content = _mainWindow.cmbBandlid.Text;
         }
     }
 }

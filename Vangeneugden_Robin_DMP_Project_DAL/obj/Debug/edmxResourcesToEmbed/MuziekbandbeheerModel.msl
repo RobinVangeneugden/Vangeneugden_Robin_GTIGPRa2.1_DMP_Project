@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MuziekbandbeheerModelStoreContainer" CdmEntityContainer="MuziekbandBeheerEntities">
+    <EntitySetMapping Name="Groep">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.Groep">
+        <MappingFragment StoreEntitySet="Groep">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+          <ScalarProperty Name="externeGroep" ColumnName="externeGroep" />
+          <ScalarProperty Name="dirigentId" ColumnName="dirigentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroepOptreden">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.GroepOptreden">
+        <MappingFragment StoreEntitySet="GroepOptreden">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="groepId" ColumnName="groepId" />
+          <ScalarProperty Name="optredenId" ColumnName="optredenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroepRepetitie">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.GroepRepetitie">
+        <MappingFragment StoreEntitySet="GroepRepetitie">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="groepId" ColumnName="groepId" />
+          <ScalarProperty Name="repetitieId" ColumnName="repetitieId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instrument">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.Instrument">
+        <MappingFragment StoreEntitySet="Instrument">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="artikelNummer" ColumnName="artikelNummer" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="soort" ColumnName="soort" />
+          <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+          <ScalarProperty Name="bouwjaar" ColumnName="bouwjaar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lid">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.Lid">
+        <MappingFragment StoreEntitySet="Lid">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+          <ScalarProperty Name="familienaam" ColumnName="familienaam" />
+          <ScalarProperty Name="geslacht" ColumnName="geslacht" />
+          <ScalarProperty Name="straat" ColumnName="straat" />
+          <ScalarProperty Name="huisnummer" ColumnName="huisnummer" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="gemeente" ColumnName="gemeente" />
+          <ScalarProperty Name="land" ColumnName="land" />
+          <ScalarProperty Name="rijksregisternr" ColumnName="rijksregisternr" />
+          <ScalarProperty Name="inschrijvingsDatum" ColumnName="inschrijvingsDatum" />
+          <ScalarProperty Name="telefoon" ColumnName="telefoon" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LidGroep">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.LidGroep">
+        <MappingFragment StoreEntitySet="LidGroep">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lidId" ColumnName="lidId" />
+          <ScalarProperty Name="groepId" ColumnName="groepId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LidInstrument">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.LidInstrument">
+        <MappingFragment StoreEntitySet="LidInstrument">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lidId" ColumnName="lidId" />
+          <ScalarProperty Name="instrumentId" ColumnName="instrumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locatie">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.Locatie">
+        <MappingFragment StoreEntitySet="Locatie">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+          <ScalarProperty Name="straat" ColumnName="straat" />
+          <ScalarProperty Name="huisnummer" ColumnName="huisnummer" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="gemeente" ColumnName="gemeente" />
+          <ScalarProperty Name="land" ColumnName="land" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Optreden">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.Optreden">
+        <MappingFragment StoreEntitySet="Optreden">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+          <ScalarProperty Name="locatieId" ColumnName="locatieId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repetitie">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.Repetitie">
+        <MappingFragment StoreEntitySet="Repetitie">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+          <ScalarProperty Name="locatieId" ColumnName="locatieId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

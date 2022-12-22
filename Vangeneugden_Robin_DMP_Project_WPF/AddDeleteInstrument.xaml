@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Vangeneugden_Robin_DMP_Project_WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddDeleteInstrument">
+      Title="AddDeleteInstrument" Loaded="Window_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="mouseOverColor"
                     Color="#5FAEBA" />

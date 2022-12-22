@@ -13,10 +13,10 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MuziekbandEntities : DbContext
+    public partial class MuziekbandBeheerEntities : DbContext
     {
-        public MuziekbandEntities()
-            : base("name=MuziekbandEntities")
+        public MuziekbandBeheerEntities()
+            : base("name=MuziekbandBeheerEntities")
         {
         }
     

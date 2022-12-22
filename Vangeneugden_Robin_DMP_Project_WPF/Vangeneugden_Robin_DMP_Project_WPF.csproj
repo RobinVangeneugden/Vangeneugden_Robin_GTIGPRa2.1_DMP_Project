@@ -140,5 +140,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vangeneugden_Robin_DMP_Project_DAL\Vangeneugden_Robin_DMP_Project_DAL.csproj">
+      <Project>{1c9a4fea-0d2f-4538-91f4-b00ca547e2b9}</Project>
+      <Name>Vangeneugden_Robin_DMP_Project_DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

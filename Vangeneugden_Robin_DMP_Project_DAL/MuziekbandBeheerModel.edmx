@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MuziekbandModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MuziekbandbeheerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Groep">
           <Key>
             <PropertyRef Name="id" />
@@ -237,17 +237,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MuziekbandModelStoreContainer">
-          <EntitySet Name="Groep" EntityType="Self.Groep" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GroepOptreden" EntityType="Self.GroepOptreden" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GroepRepetitie" EntityType="Self.GroepRepetitie" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Instrument" EntityType="Self.Instrument" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Lid" EntityType="Self.Lid" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LidGroep" EntityType="Self.LidGroep" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LidInstrument" EntityType="Self.LidInstrument" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Locatie" EntityType="Self.Locatie" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Optreden" EntityType="Self.Optreden" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Repetitie" EntityType="Self.Repetitie" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="MuziekbandbeheerModelStoreContainer">
+          <EntitySet Name="Groep" EntityType="Self.Groep" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="GroepOptreden" EntityType="Self.GroepOptreden" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="GroepRepetitie" EntityType="Self.GroepRepetitie" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="Instrument" EntityType="Self.Instrument" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="Lid" EntityType="Self.Lid" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="LidGroep" EntityType="Self.LidGroep" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="LidInstrument" EntityType="Self.LidInstrument" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="Locatie" EntityType="Self.Locatie" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="Optreden" EntityType="Self.Optreden" Schema="MUZ" store:Type="Tables" />
+          <EntitySet Name="Repetitie" EntityType="Self.Repetitie" Schema="MUZ" store:Type="Tables" />
           <AssociationSet Name="FK_Groep_Dirigent" Association="Self.FK_Groep_Dirigent">
             <End Role="Lid" EntitySet="Lid" />
             <End Role="Groep" EntitySet="Groep" />
@@ -297,7 +297,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MuziekbandModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MuziekbandbeheerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Groep">
           <Key>
             <PropertyRef Name="id" />
@@ -552,7 +552,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MuziekbandEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MuziekbandBeheerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Groep" EntityType="Self.Groep" />
           <EntitySet Name="GroepOptreden" EntityType="Self.GroepOptreden" />
           <EntitySet Name="GroepRepetitie" EntityType="Self.GroepRepetitie" />
@@ -613,9 +613,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MuziekbandModelStoreContainer" CdmEntityContainer="MuziekbandEntities">
+        <EntityContainerMapping StorageEntityContainer="MuziekbandbeheerModelStoreContainer" CdmEntityContainer="MuziekbandBeheerEntities">
           <EntitySetMapping Name="Groep">
-            <EntityTypeMapping TypeName="MuziekbandModel.Groep">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.Groep">
               <MappingFragment StoreEntitySet="Groep">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
@@ -626,7 +626,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroepOptreden">
-            <EntityTypeMapping TypeName="MuziekbandModel.GroepOptreden">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.GroepOptreden">
               <MappingFragment StoreEntitySet="GroepOptreden">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="groepId" ColumnName="groepId" />
@@ -635,7 +635,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroepRepetitie">
-            <EntityTypeMapping TypeName="MuziekbandModel.GroepRepetitie">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.GroepRepetitie">
               <MappingFragment StoreEntitySet="GroepRepetitie">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="groepId" ColumnName="groepId" />
@@ -644,7 +644,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Instrument">
-            <EntityTypeMapping TypeName="MuziekbandModel.Instrument">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.Instrument">
               <MappingFragment StoreEntitySet="Instrument">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="artikelNummer" ColumnName="artikelNummer" />
@@ -656,7 +656,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lid">
-            <EntityTypeMapping TypeName="MuziekbandModel.Lid">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.Lid">
               <MappingFragment StoreEntitySet="Lid">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="voornaam" ColumnName="voornaam" />
@@ -675,7 +675,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LidGroep">
-            <EntityTypeMapping TypeName="MuziekbandModel.LidGroep">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.LidGroep">
               <MappingFragment StoreEntitySet="LidGroep">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="lidId" ColumnName="lidId" />
@@ -684,7 +684,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LidInstrument">
-            <EntityTypeMapping TypeName="MuziekbandModel.LidInstrument">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.LidInstrument">
               <MappingFragment StoreEntitySet="LidInstrument">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="lidId" ColumnName="lidId" />
@@ -693,7 +693,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Locatie">
-            <EntityTypeMapping TypeName="MuziekbandModel.Locatie">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.Locatie">
               <MappingFragment StoreEntitySet="Locatie">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
@@ -707,7 +707,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Optreden">
-            <EntityTypeMapping TypeName="MuziekbandModel.Optreden">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.Optreden">
               <MappingFragment StoreEntitySet="Optreden">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
@@ -716,7 +716,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Repetitie">
-            <EntityTypeMapping TypeName="MuziekbandModel.Repetitie">
+            <EntityTypeMapping TypeName="MuziekbandbeheerModel.Repetitie">
               <MappingFragment StoreEntitySet="Repetitie">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />

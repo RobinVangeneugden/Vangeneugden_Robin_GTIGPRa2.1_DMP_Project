@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_DAL\MuziekbandBeheerModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_DAL\MuziekbandbeheerModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

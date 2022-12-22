@@ -12,7 +12,13 @@ DROP INDEX IF EXISTS Lid.AK_Lid_rijksregisternr;
 DROP INDEX IF EXISTS Lid.AK_Lid_email;
 DROP INDEX IF EXISTS Instrument.AK_Instrument_artikelNummer;
 
-CREATE TABLE Lid
+DROP SCHEMA IF EXISTS MUZ;
+GO
+
+CREATE SCHEMA MUZ
+GO
+
+CREATE TABLE MUZ.Lid
 (
 	id					int			NOT NULL,
 	voornaam			varchar(25)	NOT NULL,
@@ -38,7 +44,7 @@ CREATE TABLE Lid
 
 );
 
-INSERT INTO Lid
+INSERT INTO MUZ.Lid
 	(id, voornaam, familienaam, geslacht, straat, huisnummer, postcode, gemeente, land, rijksregisternr, inschrijvingsdatum, telefoon, email)
 	VALUES	(2, 'Mari�tte', 'Brans', 'V', 'Europalaan', '95 bus 14', '3600', 'Genk', 'Belg�e', '46 04 28 040 26', '1966-01-21', '089123456', null),
 			(4, 'Flor', 'Van der Linden', 'M', 'Philip Spethstraat', '47', '2950', 'Kapellen', 'Belg�e', '35 01 25 201 61', '1968-10-14', '032147258', null),
@@ -61,7 +67,7 @@ INSERT INTO Lid
 			(106, 'Lorena', 'Vangeneugden', 'V', 'Geiteling', '78', '3580', 'Beringen', 'Belg�e', '18 10 09 457 65', '2022-03-02', null, null),
 			(121, 'Yaiden', 'Leanaerts', 'M', 'Bosschelweg', '17', '3950', 'Bocholt', 'Belg�e', '14 11 30 123 45', '2022-03-02', null, null);
 
-CREATE TABLE Groep
+CREATE TABLE MUZ.Groep
 (
 	id					int				IDENTITY(1,1),
 	naam				varchar(50)		NOT NULL,
@@ -72,11 +78,11 @@ CREATE TABLE Groep
 		PRIMARY KEY (id),
 	CONSTRAINT FK_Groep_Dirigent
 		FOREIGN KEY(dirigentId)
-			REFERENCES Lid(id)
+			REFERENCES MUZ.Lid(id)
 			ON DELETE SET NULL
 );
 
-INSERT INTO Groep
+INSERT INTO MUZ.Groep
 	(naam, omschrijving, externeGroep, dirigentId)
 	VALUES	('Koninklijke Harmonie van Hasselt', 'Groep die bestaat uit drumband, orkest en majorettes', 'false', 15),
 			('Drumband van de KH Hasselt', 'Groep die slaginstrumenten bespeeld', 'false', 13),
@@ -90,7 +96,7 @@ INSERT INTO Groep
 			('Koninklijke fanfare Hoop in de Toekomst', 'Groep die enkel bestaat uit een orkest', 'true', null),
 			('Koninklijke fanfare St-Cecilia Kermt', 'Groep die enkel bestaat uit een orkest', 'true', null);
 
-CREATE TABLE LidGroep
+CREATE TABLE MUZ.LidGroep
 (
 	id					int			IDENTITY(1,1),
 	lidId				int			NOT NULL,
@@ -99,13 +105,13 @@ CREATE TABLE LidGroep
 		PRIMARY KEY (id),
 	CONSTRAINT FK_LidGroep_Lid
 		FOREIGN KEY(lidId)
-			REFERENCES Lid(id),
+			REFERENCES MUZ.Lid(id),
 	CONSTRAINT FK_LidGroep_Groep
 		FOREIGN KEY(groepId)
-			REFERENCES Groep(id)
+			REFERENCES MUZ.Groep(id)
 );
 
-INSERT INTO LidGroep
+INSERT INTO MUZ.LidGroep
 	(lidId, groepId)
 	VALUES	(2, 3),
 			(4, 3),
@@ -132,7 +138,7 @@ INSERT INTO LidGroep
 			(106, 4),
 			(121, 2);
 
-CREATE TABLE Locatie
+CREATE TABLE MUZ.Locatie
 (
 	id				int			IDENTITY(1,1),
 	naam			varchar(100)	NOT NULL,
@@ -148,7 +154,7 @@ CREATE TABLE Locatie
 		PRIMARY KEY (id),
 );
 
-INSERT INTO Locatie
+INSERT INTO MUZ.Locatie
 	(naam, omschrijving, straat, huisnummer, postcode, gemeente, land)
 	VALUES	('Vrije basisoefenschool Mozaiek', null, 'Kiewitstraat', '101', '3500', 'Hasselt', 'Belg�e'),
 			('Zaal Elckerlyc Sporthal', null, 'Pastorijstraat', '4', '3500', 'Hasselt', 'Belg�e'),
@@ -172,7 +178,7 @@ INSERT INTO Locatie
 			('Sint-Lambertuskerk', 'Verzamelplaats voor optocht', 'pastorijstraat', '1', '3500', 'Sint-Lambrechts-Herk', 'Belg�e'),
 			('Kermeta Kermt', 'feestzaal en verzamelplaats voor optocht', 'Diestersteenweg', '204', '3510', 'Kermt', 'Belg�e');
 
-CREATE TABLE Repetitie
+CREATE TABLE MUZ.Repetitie
 (
 	id				int			IDENTITY(1,1),
 	omschrijving	varchar(100)	NOT NULL,
@@ -181,10 +187,10 @@ CREATE TABLE Repetitie
 		PRIMARY KEY (id),
 	CONSTRAINT FK_Repetitie_Locatie
 		FOREIGN KEY(locatieId)
-			REFERENCES Locatie(id)
+			REFERENCES MUZ.Locatie(id)
 );
 
-INSERT INTO Repetitie
+INSERT INTO MUZ.Repetitie
 	(omschrijving, locatieId)
 	VALUES	('Repetitie Drumband - Inoefenen van Ritmische partituren', 2),
 			('Repetitie Drumband - Inoefenen van Ritmische partituren', 3),
@@ -198,7 +204,7 @@ INSERT INTO Repetitie
 			('Repetitie Orkest met Drumband & Majorettes - Inoefenen van Muziekpartituren met Drums en dans', 2),
 			('Repetitie Majorettes - Inoefenen van dans', 1);
 
-CREATE TABLE GroepRepetitie
+CREATE TABLE MUZ.GroepRepetitie
 (
 	id				int			IDENTITY(1,1),
 	groepId			int			NOT NULL,
@@ -207,13 +213,13 @@ CREATE TABLE GroepRepetitie
 		PRIMARY KEY (id),
 	CONSTRAINT FK_GroepRepetitie_Groep
 		FOREIGN KEY(groepId)
-			REFERENCES Groep(id),
+			REFERENCES MUZ.Groep(id),
 	CONSTRAINT FK_GroepRepetitie_Repetitie
 		FOREIGN KEY(repetitieId)
-			REFERENCES Repetitie(id)
+			REFERENCES MUZ.Repetitie(id)
 );
 
-INSERT INTO GroepRepetitie
+INSERT INTO MUZ.GroepRepetitie
 	(groepId, repetitieId)
 	VALUES	(1, 10),
 			(2, 1),
@@ -233,7 +239,7 @@ INSERT INTO GroepRepetitie
 			(10, 7),
 			(11, 8);
 
-CREATE TABLE Optreden
+CREATE TABLE MUZ.Optreden
 (
 	id				int			IDENTITY(1,1),
 	omschrijving	varchar(50)	NOT NULL,
@@ -242,10 +248,10 @@ CREATE TABLE Optreden
 		PRIMARY KEY (id),
 	CONSTRAINT FK_Optreden_Locatie
 		FOREIGN KEY(locatieId)
-			REFERENCES Locatie(id)
+			REFERENCES MUZ.Locatie(id)
 );
 
-INSERT INTO Optreden
+INSERT INTO MUZ.Optreden
 	(omschrijving, locatieId)
 	VALUES	('Nieuwjaarsconcert', 8),
 			('Jeneverfeesten', 12),
@@ -270,7 +276,7 @@ INSERT INTO Optreden
 			('Speculaasfeesten', 14),
 			('Speculaasfeesten', 16);
 
-CREATE TABLE GroepOptreden
+CREATE TABLE MUZ.GroepOptreden
 (
 	id				int			IDENTITY(1,1),
 	groepId			int			NOT NULL,
@@ -279,13 +285,13 @@ CREATE TABLE GroepOptreden
 		PRIMARY KEY (id),
 	CONSTRAINT FK_GroepOptreden_Groep
 		FOREIGN KEY(groepId)
-			REFERENCES Groep(id),
+			REFERENCES MUZ.Groep(id),
 	CONSTRAINT FK_GroepOptreden_Optreden
 		FOREIGN KEY(optredenId)
-			REFERENCES Optreden(id)
+			REFERENCES MUZ.Optreden(id)
 );
 
-INSERT INTO GroepOptreden
+INSERT INTO MUZ.GroepOptreden
 	(groepId, optredenId)
 	VALUES	(1, 1),
 			(1, 2),
@@ -310,7 +316,7 @@ INSERT INTO GroepOptreden
 			(2, 18),
 			(6, 18);
 
-CREATE TABLE Instrument
+CREATE TABLE MUZ.Instrument
 (
 	id				int				IDENTITY(1,1),
 	artikelNummer	varchar(25)		NOT NULL,
@@ -322,7 +328,7 @@ CREATE TABLE Instrument
 		PRIMARY KEY(id)
 );
 
-INSERT INTO Instrument
+INSERT INTO MUZ.Instrument
 	(artikelnummer, naam, soort, omschrijving, bouwjaar)
 	VALUES	('25957', 'marching snaredrum', 'percussie', 'kan zowel gebruikt worden voor scherpe als doffe percussiepartijen', null),
 			('515591', 'timptoms', 'percussie', null, null),
@@ -345,7 +351,7 @@ INSERT INTO Instrument
 			('306134', 'conga set', 'percussie', 'gemaakt van thaise walnoot hout', '2013'),
 			('362167', 'fagot', 'houtblazer', null, '2015');
 
-CREATE TABLE LidInstrument
+CREATE TABLE MUZ.LidInstrument
 (
 	id				int			IDENTITY(1,1),
 	lidId			int			NOT NULL,
@@ -354,13 +360,13 @@ CREATE TABLE LidInstrument
 		PRIMARY KEY(id),
 	CONSTRAINT FK_LidInstrument_Lid
 		FOREIGN KEY(lidId)
-			REFERENCES Lid(id),
+			REFERENCES MUZ.Lid(id),
 	CONSTRAINT FK_LidInstrument_Instrument
 		FOREIGN KEY(instrumentId)
-			REFERENCES Instrument(id)
+			REFERENCES MUZ.Instrument(id)
 );
 
-INSERT INTO LidInstrument
+INSERT INTO MUZ.LidInstrument
 	(lidId, instrumentId)
 	VALUES	(2, 6),
 			(4, 7),
@@ -390,10 +396,10 @@ INSERT INTO LidInstrument
 			(121, 2);
 
 CREATE INDEX AK_Lid_rijksregisternr
-ON Lid(rijksregisternr);
+ON MUZ.Lid(rijksregisternr);
 
 CREATE INDEX AK_Lid_email
-ON Lid(email);
+ON MUZ.Lid(email);
 
 CREATE INDEX AK_Instrument_artikelNummer
-ON Instrument(artikelNummer);
+ON MUZ.Instrument(artikelNummer);

@@ -53,78 +53,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseConnectie.cs" />
+    <Compile Include="DatabaseOperations.cs" />
     <Compile Include="Groep.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GroepOptreden.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GroepRepetitie.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Instrument.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Lid.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LidGroep.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LidInstrument.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Locatie.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="MuziekbandBeheerModel.Context.cs">
+    <Compile Include="MuziekbandbeheerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MuziekbandBeheerModel.Context.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MuziekbandBeheerModel.cs">
+    <Compile Include="MuziekbandbeheerModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="MuziekbandBeheerModel.Designer.cs">
+    <Compile Include="MuziekbandbeheerModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MuziekbandBeheerModel.edmx</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Optreden.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repetitie.cs">
-      <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
+      <DependentUpon>MuziekbandbeheerModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="MuziekbandBeheerModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MuziekbandBeheerModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="MuziekbandBeheerModel.edmx.diagram">
-      <DependentUpon>MuziekbandBeheerModel.edmx</DependentUpon>
+    <EntityDeploy Include="MuziekbandbeheerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MuziekbandbeheerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MuziekbandbeheerModel.edmx.diagram">
+      <DependentUpon>MuziekbandbeheerModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MuziekbandBeheerModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MuziekbandBeheerModel.Context.cs</LastGenOutput>
-      <DependentUpon>MuziekbandBeheerModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="MuziekbandBeheerModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MuziekbandBeheerModel.edmx</DependentUpon>
-      <LastGenOutput>MuziekbandBeheerModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="MuziekbandbeheerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MuziekbandbeheerModel.edmx</DependentUpon>
+      <LastGenOutput>MuziekbandbeheerModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MuziekbandbeheerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MuziekbandbeheerModel.edmx</DependentUpon>
+      <LastGenOutput>MuziekbandbeheerModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

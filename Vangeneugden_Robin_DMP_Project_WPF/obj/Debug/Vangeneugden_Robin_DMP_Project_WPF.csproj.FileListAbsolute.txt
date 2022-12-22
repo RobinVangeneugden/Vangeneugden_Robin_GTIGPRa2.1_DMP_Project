@@ -28,3 +28,8 @@ C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\Dapper.dll
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\Dapper.xml
 C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\obj\Debug\Vangeneugden_Robin_DMP_Project_WPF.csproj.CopyComplete
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\Vangeneugden_Robin_DMP_Project_DAL.dll
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\EntityFramework.dll
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\Vangeneugden_Robin_DMP_Project_DAL.pdb
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\Vangeneugden_Robin_DMP_Project_DAL.dll.config
+C:\Users\Robin\OneDrive\Documenten\datamanipulatie ve programma\Oef_Vangeneugden_Robin_DMP_Project\Vangeneugden_Robin_DMP_Project_WPF\bin\Debug\EntityFramework.xml
