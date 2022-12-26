@@ -35,5 +35,10 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public virtual ICollection<GroepRepetitie> GroepRepetitie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LidGroep> LidGroep { get; set; }
+
+        public override string ToString()
+        {
+            return $"{naam}";
+        }
     }
 }

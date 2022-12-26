@@ -27,5 +27,15 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GroepRepetitie> GroepRepetitie { get; set; }
         public virtual Locatie Locatie { get; set; }
+
+        public override string ToString()
+        {
+            if (Locatie != null)
+            {
+                return $"{omschrijving} {Locatie}";
+            }
+            return $"{omschrijving}";
+            
+        }
     }
 }

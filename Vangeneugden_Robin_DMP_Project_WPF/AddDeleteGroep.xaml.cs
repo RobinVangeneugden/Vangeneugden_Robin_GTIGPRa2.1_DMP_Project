@@ -35,6 +35,8 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             lblBandlid.Content = _mainWindow.cmbBandlid.Text;
+            lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+            lbGroepen.ItemsSource = DatabaseOperations.OphalenGroepen();
         }
     }
 }

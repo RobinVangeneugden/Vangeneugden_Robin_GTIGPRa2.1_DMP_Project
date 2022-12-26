@@ -8,3 +8,4 @@
 <p>Sixth Commit: Aanpassen Local DB</p>
 <p>Seventh Commit: DAL models aanmaken</p>
 <p>Eight Commit: lblBandlid in child windows aanpassen met cmbBandlid.selecteditem van mainWindow</p>
+<p>Ninth Commit: Database operations: ophalen lijst Groepen, Repetities, Concerten, Instrumenten + ophalen lijst InstrumentenVanBandlid en lijst GroepenVanBandlid</p>

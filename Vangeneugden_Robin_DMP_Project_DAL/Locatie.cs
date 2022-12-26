@@ -34,5 +34,10 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public virtual ICollection<Optreden> Optreden { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Repetitie> Repetitie { get; set; }
+
+        public override string ToString()
+        {
+            return $"{naam} in {gemeente}";
+        }
     }
 }
