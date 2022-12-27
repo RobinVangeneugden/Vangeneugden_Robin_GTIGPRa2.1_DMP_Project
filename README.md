@@ -10,3 +10,4 @@
 <p>Eighth Commit: lblBandlid in child windows aanpassen met cmbBandlid.selecteditem van mainWindow</p>
 <p>Ninth Commit: Database operations: ophalen lijst Groepen, Repetities, Concerten, Instrumenten + ophalen lijst InstrumentenVanBandlid en lijst GroepenVanBandlid</p>
 <p>Tenth Commit: Update Toon Info Button + Toevoegen foutmelding als bandlid niet is geselecteerd</p>
+<p>Eleventh Commit: Lijsten Repetities - en Optredens Van Bandlid aangepast</p>

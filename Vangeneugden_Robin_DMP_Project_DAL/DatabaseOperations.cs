@@ -62,6 +62,16 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        public static List<Repetitie> OphalenRepetitiesVanBandlid(int lidID)
+        {
+            Start();
+            var result = _muziekbandDb.Connectie.Query<Repetitie>("SELECT DISTINCT Repetitie.* FROM MUZ.Repetitie INNER JOIN MUZ.GroepRepetitie ON Repetitie.id = GroepRepetitie.repetitieId INNER JOIN MUZ.Groep ON Groep.id = GroepRepetitie.groepId INNER JOIN MUZ.LidGroep ON Groep.id = LidGroep.groepId INNER JOIN MUZ.Lid ON Lid.id = LidGroep.lidId WHERE Lid.id = @lidID", param: new { lidID }).ToList();
+
+            _muziekbandDb.Close();
+
+            return result;
+        }
+
         public static List<Locatie> OphalenLocaties()
         {
             Start();
@@ -76,6 +86,16 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         {
             Start();
             var result = _muziekbandDb.Connectie.Query<Optreden>("SELECT * FROM MUZ.Optreden").ToList();
+
+            _muziekbandDb.Close();
+
+            return result;
+        }
+
+        public static List<Optreden> OphalenOptredensVanBandlid(int lidID)
+        {
+            Start();
+            var result = _muziekbandDb.Connectie.Query<Optreden>("SELECT DISTINCT Optreden.* FROM MUZ.Optreden INNER JOIN MUZ.GroepOptreden ON Optreden.id = GroepOptreden.optredenId LEFT JOIN MUZ.Groep ON Groep.id = GroepOptreden.groepId LEFT JOIN MUZ.LidGroep ON Groep.id = LidGroep.groepId LEFT JOIN MUZ.Lid ON Lid.id = LidGroep.lidId WHERE Lid.id = @lidID", param: new { lidID }).ToList();
 
             _muziekbandDb.Close();
 

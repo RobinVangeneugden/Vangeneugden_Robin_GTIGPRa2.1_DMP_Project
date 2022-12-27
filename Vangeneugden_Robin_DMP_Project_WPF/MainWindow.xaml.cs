@@ -31,7 +31,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (cmbBandlid.SelectedItem == null)
             {
-                MessageBox.Show("U moet een bandlid selecteren!");
+                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (cmbBandlid.SelectedItem == null)
             {
-                MessageBox.Show("U moet een bandlid selecteren!");
+                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (cmbBandlid.SelectedItem == null)
             {
-                MessageBox.Show("U moet een bandlid selecteren!");
+                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -72,7 +72,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (cmbBandlid.SelectedItem == null)
             {
-                MessageBox.Show("U moet een bandlid selecteren!");
+                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -91,7 +91,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (cmbBandlid.SelectedItem == null)
             {
-                MessageBox.Show("U moet een bandlid selecteren!");
+                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -105,7 +105,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (cmbBandlid.SelectedItem == null)
             {
-                MessageBox.Show("U moet een bandlid selecteren!");
+                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -124,7 +124,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (cmbBandlid.SelectedItem == null)
             {
-                MessageBox.Show("U moet een bandlid selecteren!");
+                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

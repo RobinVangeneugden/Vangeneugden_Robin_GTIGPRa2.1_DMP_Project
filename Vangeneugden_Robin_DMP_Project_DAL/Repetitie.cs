@@ -30,11 +30,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
         public override string ToString()
         {
-            if (Locatie != null)
-            {
-                return $"{omschrijving} {Locatie}";
-            }
-            return $"{omschrijving}";
+            return $"{omschrijving} {locatieId}";
             
         }
     }
