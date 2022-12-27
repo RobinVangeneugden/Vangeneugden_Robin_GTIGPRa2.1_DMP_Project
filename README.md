@@ -13,3 +13,4 @@
 <p>Eleventh Commit: Lijsten Repetities - en Optredens Van Bandlid aangepast</p>
 <p>Twelfth Commit: Toon Info update</p>
 <p>Thirteenth Commit: Aanpassen design AddBandlid en UpdataBandlid + textboxen UpdataBandlid opvullen</p>
+<p>Fourteenth Commit: Delete Bandlid laten werken, AddInstrument bij Bandlid laten werken, Gewerkt aan DeleteInstrument bij Bandlid</p>
