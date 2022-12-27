@@ -34,7 +34,7 @@
         <ComboBox x:Name="cmbBandlid" Margin="12" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
         <!--Rij2 -->
-        <Button x:Name="btnToonInfo" Content="Toon info" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
+        <Button x:Name="btnToonInfo" Content="Toon info" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Click="BtnToonInfo_Click"/>
         <Button x:Name="BtnAddDeleteGroep" Content="Add/Delete Groep" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Click="BtnAddDeleteGroep_Click"/>
         
         <!--Rij3 -->

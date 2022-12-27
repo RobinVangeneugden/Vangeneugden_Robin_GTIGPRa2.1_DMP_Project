@@ -29,26 +29,57 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnAddDeleteGroep_Click(object sender, RoutedEventArgs e)
         {
-            AddDeleteGroep GroepWindow = new AddDeleteGroep(this, ((Lid)cmbBandlid.SelectedItem).id);
-            GroepWindow.ShowDialog();
+            if (cmbBandlid.SelectedItem == null)
+            {
+                MessageBox.Show("U moet een bandlid selecteren!");
+            }
+            else
+            {
+                AddDeleteGroep GroepWindow = new AddDeleteGroep(this, ((Lid)cmbBandlid.SelectedItem).id);
+                GroepWindow.ShowDialog();
+            }
         }
 
         private void BtnAddDeleteConcert_Click(object sender, RoutedEventArgs e)
         {
-            AddDeleteConcert ConcertWindow = new AddDeleteConcert(this, ((Lid)cmbBandlid.SelectedItem).id);
-            ConcertWindow.ShowDialog();
+            if (cmbBandlid.SelectedItem == null)
+            {
+                MessageBox.Show("U moet een bandlid selecteren!");
+            }
+            else
+            {
+                AddDeleteConcert ConcertWindow = new AddDeleteConcert(this, ((Lid)cmbBandlid.SelectedItem).id);
+                ConcertWindow.ShowDialog();
+            }
+            
         }
 
         private void BtnAddDeleteRepetitie_Click(object sender, RoutedEventArgs e)
         {
-            AddDeleteRepetite RepetitieWindow = new AddDeleteRepetite(this, ((Lid)cmbBandlid.SelectedItem).id);
-            RepetitieWindow.ShowDialog();
+            if (cmbBandlid.SelectedItem == null)
+            {
+                MessageBox.Show("U moet een bandlid selecteren!");
+            }
+            else
+            {
+                AddDeleteRepetite RepetitieWindow = new AddDeleteRepetite(this, ((Lid)cmbBandlid.SelectedItem).id);
+                RepetitieWindow.ShowDialog();
+            }
+            
         }
 
         private void BtnAddDeleteInstrument_Click(object sender, RoutedEventArgs e)
         {
-            AddDeleteInstrument InstrumentWindow = new AddDeleteInstrument(this, ((Lid)cmbBandlid.SelectedItem).id);
-            InstrumentWindow.ShowDialog();
+            if (cmbBandlid.SelectedItem == null)
+            {
+                MessageBox.Show("U moet een bandlid selecteren!");
+            }
+            else
+            {
+                AddDeleteInstrument InstrumentWindow = new AddDeleteInstrument(this, ((Lid)cmbBandlid.SelectedItem).id);
+                InstrumentWindow.ShowDialog();
+            }
+            
         }
 
         private void BtnVerwijderBandlid_Click(object sender, RoutedEventArgs e)
@@ -58,21 +89,52 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnPasGegevensAan_Click(object sender, RoutedEventArgs e)
         {
-            UpdateBandlid UpdateGegevensWindow = new UpdateBandlid();
-            UpdateGegevensWindow.Owner = this;
-            UpdateGegevensWindow.ShowDialog();
+            if (cmbBandlid.SelectedItem == null)
+            {
+                MessageBox.Show("U moet een bandlid selecteren!");
+            }
+            else
+            {
+                UpdateBandlid UpdateGegevensWindow = new UpdateBandlid();
+                UpdateGegevensWindow.ShowDialog();
+            }
+            
         }
 
         private void BtnVoegBandlidToe_Click(object sender, RoutedEventArgs e)
         {
-            AddBandlid BandlidToevoegenWindow = new AddBandlid();
-            BandlidToevoegenWindow.Owner = this;
-            BandlidToevoegenWindow.ShowDialog();
+            if (cmbBandlid.SelectedItem == null)
+            {
+                MessageBox.Show("U moet een bandlid selecteren!");
+            }
+            else
+            {
+                AddBandlid BandlidToevoegenWindow = new AddBandlid();
+                BandlidToevoegenWindow.ShowDialog();
+            }
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             cmbBandlid.ItemsSource = DatabaseOperations.OphalenLeden();
+        }
+
+        private void BtnToonInfo_Click(object sender, RoutedEventArgs e)
+        {
+            if (cmbBandlid.SelectedItem == null)
+            {
+                MessageBox.Show("U moet een bandlid selecteren!");
+            }
+            else
+            {
+                string bandLidGroepen = cmbBandlid.Text + " is lid van: " + string.Join(" en ", DatabaseOperations.OphalenGroepenVanBandlid(((Lid)cmbBandlid.SelectedItem).id));
+
+                string bandLidInstrumenten = cmbBandlid.Text + " bespeeld volgende instrumenten: " + Environment.NewLine + string.Join(Environment.NewLine, DatabaseOperations.OphalenInstrumentenVanBandlid(((Lid)cmbBandlid.SelectedItem).id));
+
+                lblToonInfo.Content = bandLidGroepen + Environment.NewLine + Environment.NewLine + bandLidInstrumenten;
+            }
+            
         }
     }
 }
