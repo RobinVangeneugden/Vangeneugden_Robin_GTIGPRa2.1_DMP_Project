@@ -132,7 +132,11 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
                 string bandLidInstrumenten = cmbBandlid.Text + " bespeeld volgende instrumenten: " + Environment.NewLine + string.Join(Environment.NewLine, DatabaseOperations.OphalenInstrumentenVanBandlid(((Lid)cmbBandlid.SelectedItem).id));
 
-                lblToonInfo.Content = bandLidGroepen + Environment.NewLine + Environment.NewLine + bandLidInstrumenten;
+                string bandLidRepetities = cmbBandlid.Text + " neemt deel aan volgende repetities: " + Environment.NewLine + string.Join(Environment.NewLine, DatabaseOperations.OphalenRepetitiesVanBandlid(((Lid)cmbBandlid.SelectedItem).id)); ;
+
+                string bandLidOptredens = cmbBandlid.Text + " neemt deel aan volgende optredens: " + Environment.NewLine + string.Join(Environment.NewLine, DatabaseOperations.OphalenOptredensVanBandlid(((Lid)cmbBandlid.SelectedItem).id)); ;
+
+                lblToonInfo.Content = bandLidGroepen + Environment.NewLine + Environment.NewLine + bandLidInstrumenten + Environment.NewLine + Environment.NewLine + bandLidRepetities + Environment.NewLine + Environment.NewLine + bandLidOptredens;
             }
             
         }
