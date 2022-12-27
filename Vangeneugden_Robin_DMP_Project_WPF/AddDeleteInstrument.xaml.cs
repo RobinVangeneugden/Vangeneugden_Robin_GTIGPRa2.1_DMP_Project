@@ -36,5 +36,17 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
             lbInstrument.ItemsSource = DatabaseOperations.OphalenInstrumenten();
         }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseOperations.AddInstrumentVanBandlid(_lidID, ((Instrument)lbInstrument.SelectedItem).id);
+            lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseOperations.DeleteInstrumentVanBandlid(((LidInstrument)lbBandlid.SelectedItem).lidId, ((LidInstrument)lbBandlid.SelectedItem).instrumentId);
+            lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+        }
     }
 }

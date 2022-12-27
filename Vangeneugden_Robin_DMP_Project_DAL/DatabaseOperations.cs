@@ -123,6 +123,87 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        public static bool AddInstrumentVanBandlid(int lidID, int instrumentID)
+        {
+            
 
+            string sql = @"INSERT INTO MUZ.LidInstrument (LidInstrument.lidId, LidInstrument.instrumentId)
+                            VALUES (@lidID, @instrumentID)";
+
+            var parameters = new
+            {
+                @lidID = lidID,
+                @instrumentID = instrumentID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+            
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+        }
+        public static bool DeleteInstrumentVanBandlid(int lidID, int instrumentID)
+        {
+            
+
+            string sql = @"DELETE FROM MUZ.LidInstrument
+                            WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID";
+
+            var parameters = new
+            {
+                @lidID = lidID,
+                @instrumentID = instrumentID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+            
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+
+            
+        }
+
+        public static bool DeleteBandlid(int lidID)
+        {
+            
+
+            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID; DELETE FROM MUZ.LidGroep WHERE LidGroep.lidId = @lidID; DELETE FROM MUZ.Lid WHERE Lid.id = @lidID;";
+
+            var parameters = new
+            {
+                @lidID = lidID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+            
+                if (affectedRows >= 1)
+                {
+                    return true;
+                }
+
+            _muziekbandDb.Close();
+
+            return false;
+        }
     }
 }

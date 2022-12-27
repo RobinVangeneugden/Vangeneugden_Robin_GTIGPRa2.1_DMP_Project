@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Documents; 
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -84,7 +84,18 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnVerwijderBandlid_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            if (MessageBox.Show("Wil je bandlid verwijderen?", "Delete bandlid?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                MessageBox.Show("Fijn dat je nog blijft!");
+            }
+            else
+            {
+                DatabaseOperations.DeleteBandlid(((Lid)cmbBandlid.SelectedItem).id);
+                MessageBox.Show("Bandlid succesvol verwijderd!", "Bandlid Verwijderen", MessageBoxButton.OK, MessageBoxImage.Hand);
+                cmbBandlid.Items.Refresh();
+
+            }
         }
 
         private void BtnPasGegevensAan_Click(object sender, RoutedEventArgs e)
@@ -96,7 +107,6 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             else
             {
                 UpdateBandlid UpdateGegevensWindow = new UpdateBandlid(this, ((Lid)cmbBandlid.SelectedItem).id);
-                UpdateGegevensWindow.Owner = this;
                 UpdateGegevensWindow.ShowDialog();
             }
             

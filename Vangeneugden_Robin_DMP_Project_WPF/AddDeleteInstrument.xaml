@@ -29,8 +29,8 @@
         <Label x:Name="lblInstrument" Content="Instrumenten" HorizontalContentAlignment="Center" Margin="15 15 15 0" Foreground="White" Background="#2F585E" FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.Column="2"/>
 
         <!--Rij2-->
-        <Button x:Name="btnAdd" Content="Add" Foreground="white" Background="#2F585E" FontWeight="Bold" Margin="10 100 10 15" Grid.Row="1" Grid.Column="1"/>
-        <Button x:Name="btnDelete" Content="Delete" Foreground="white" Background="#2F585E" FontWeight="Bold" Margin="10 15 10 15" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="btnAdd" Content="Add" Foreground="white" Background="#2F585E" FontWeight="Bold" Margin="10 100 10 15" Grid.Row="1" Grid.Column="1" Click="BtnAdd_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" Foreground="white" Background="#2F585E" FontWeight="Bold" Margin="10 15 10 15" Grid.Row="2" Grid.Column="1" Click="BtnDelete_Click"/>
         <ListBox x:Name="lbBandlid" Background="White" Margin="15 0 15 15" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3"/>
         <ListBox x:Name="lbInstrument" Background="white" Margin="15 0 15 15" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3"/>
 
