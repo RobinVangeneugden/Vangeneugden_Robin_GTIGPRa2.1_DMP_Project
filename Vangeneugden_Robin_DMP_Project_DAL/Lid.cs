@@ -45,7 +45,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
         public override string ToString()
         {
-            return $"{voornaam} {familienaam}";
+            return voornaam + " " + familienaam;
         }
     }
 }

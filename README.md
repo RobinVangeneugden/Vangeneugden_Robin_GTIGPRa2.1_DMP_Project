@@ -12,3 +12,4 @@
 <p>Tenth Commit: Update Toon Info Button + Toevoegen foutmelding als bandlid niet is geselecteerd</p>
 <p>Eleventh Commit: Lijsten Repetities - en Optredens Van Bandlid aangepast</p>
 <p>Twelfth Commit: Toon Info update</p>
+<p>Thirteenth Commit: Aanpassen design AddBandlid en UpdataBandlid + textboxen UpdataBandlig opvullen</p>

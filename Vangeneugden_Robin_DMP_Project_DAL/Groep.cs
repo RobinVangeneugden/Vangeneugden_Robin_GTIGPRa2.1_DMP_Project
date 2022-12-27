@@ -38,7 +38,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
         public override string ToString()
         {
-            return $"{naam}";
+            return naam;
         }
     }
 }

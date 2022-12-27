@@ -95,7 +95,8 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             }
             else
             {
-                UpdateBandlid UpdateGegevensWindow = new UpdateBandlid();
+                UpdateBandlid UpdateGegevensWindow = new UpdateBandlid(this, ((Lid)cmbBandlid.SelectedItem).id);
+                UpdateGegevensWindow.Owner = this;
                 UpdateGegevensWindow.ShowDialog();
             }
             
@@ -103,15 +104,9 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnVoegBandlidToe_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbBandlid.SelectedItem == null)
-            {
-                MessageBox.Show("U moet een bandlid selecteren!", "Selecteer Bandlid", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
+            
                 AddBandlid BandlidToevoegenWindow = new AddBandlid();
                 BandlidToevoegenWindow.ShowDialog();
-            }
             
         }
 

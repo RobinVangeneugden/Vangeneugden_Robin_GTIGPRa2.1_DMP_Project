@@ -30,6 +30,16 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        public static Lid OphalenLidById(int lidID)
+        {
+            Start();
+            var result = _muziekbandDb.Connectie.Query<Lid>("SELECT * FROM MUZ.Lid WHERE Lid.id = @lidID", param: new { lidID }).SingleOrDefault();
+
+            _muziekbandDb.Close();
+
+            return result;
+        }
+
         public static List<Groep> OphalenGroepen()
         {
             Start();
@@ -66,16 +76,6 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         {
             Start();
             var result = _muziekbandDb.Connectie.Query<Repetitie>("SELECT DISTINCT Repetitie.* FROM MUZ.Repetitie INNER JOIN MUZ.GroepRepetitie ON Repetitie.id = GroepRepetitie.repetitieId INNER JOIN MUZ.Groep ON Groep.id = GroepRepetitie.groepId INNER JOIN MUZ.LidGroep ON Groep.id = LidGroep.groepId INNER JOIN MUZ.Lid ON Lid.id = LidGroep.lidId WHERE Lid.id = @lidID", param: new { lidID }).ToList();
-
-            _muziekbandDb.Close();
-
-            return result;
-        }
-
-        public static List<Locatie> OphalenLocaties()
-        {
-            Start();
-            var result = _muziekbandDb.Connectie.Query<Locatie>("SELECT * FROM MUZ.Locatie").ToList();
 
             _muziekbandDb.Close();
 

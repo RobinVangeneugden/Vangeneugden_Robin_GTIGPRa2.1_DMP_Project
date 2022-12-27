@@ -38,5 +38,15 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
             lbGroepen.ItemsSource = DatabaseOperations.OphalenGroepen();
         }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

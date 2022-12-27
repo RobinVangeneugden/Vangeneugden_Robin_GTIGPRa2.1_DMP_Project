@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Vangeneugden_Robin_DMP_Project_WPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="AddBandlid">
     <Window.Resources>
         <SolidColorBrush x:Key="mouseOverColor"
@@ -19,7 +19,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -30,44 +32,52 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
-        <!--Rij1 -->
-        <Label Content="Voornaam" Margin="15"   Grid.Row="0" Grid.Column="0"/>
-        <TextBox Background="White" x:Name="txtVoornaam" Margin="10" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1"/>
-        <Label Content="Familienaam" Margin="15" Grid.Row="0" Grid.Column="2"/>
-        <TextBox Background="White" x:Name="txtFamilienaam" Margin="10" Width="250" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <!--Rij1-->
+        <Label Content="Bandlidnr" Margin="15" Grid.Row="0" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtBandlidnr" Margin="10" Grid.Row="0" Grid.Column="1"/>
 
         <!--Rij2-->
-        <Label Content="Rijksregisternr" Margin="15"   Grid.Row="1" Grid.Column="0"/>
-        <TextBox Background="White" x:Name="txtRijksregnr" Margin="10" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Geslacht" Margin="15" Grid.Row="1" Grid.Column="2"/>
-        <CheckBox x:Name="cbMan" Content="M" Margin="15" Grid.Row="1" Grid.Column="3"/>
-        <CheckBox x:Name="cbVrouw" Content="V" Margin="15" Grid.Row="1" Grid.Column="4"/>
-        <CheckBox x:Name="cbNeutraal" Content="X" Margin="15" Grid.Row="1" Grid.Column="5"/>
+        <Label Content="Voornaam" Margin="15"   Grid.Row="1" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtVoornaam" Margin="10" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Familienaam" Margin="15" Grid.Row="1" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtFamilienaam" Margin="10" Width="250" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"/>
 
         <!--Rij3-->
-        <Label Content="Straat" Margin="15"   Grid.Row="2" Grid.Column="0"/>
-        <TextBox Background="White" x:Name="txtStraat" Margin="10" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="1"/>
-        <Label Content="Huisnummer" Margin="15" Grid.Row="2" Grid.Column="2"/>
-        <TextBox Background="White" x:Name="txtHuisnummer" Margin="10" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"/>
+        <Label Content="Rijksregisternr" Margin="15"   Grid.Row="2" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtRijksregnr" Margin="10" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Geslacht" Margin="15" Grid.Row="2" Grid.Column="2"/>
+        <CheckBox x:Name="cbMan" Content="M" Margin="15" Grid.Row="2" Grid.Column="3"/>
+        <CheckBox x:Name="cbVrouw" Content="V" Margin="15" Grid.Row="2" Grid.Column="4"/>
+        <CheckBox x:Name="cbNeutraal" Content="X" Margin="15" Grid.Row="2" Grid.Column="5"/>
 
         <!--Rij4-->
-        <Label Content="Postcode" Margin="15"   Grid.Row="3" Grid.Column="0"/>
-        <TextBox Background="White" x:Name="txtPostcode" Margin="10" Width="125" VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1"/>
-        <Label Content="Gemeente" Margin="15" Grid.Row="3" Grid.Column="2"/>
-        <TextBox Background="White" x:Name="txtGemeente" Margin="10" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3"/>
+        <Label Content="Straat" Margin="15"   Grid.Row="3" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtStraat" Margin="10" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+        <Label Content="Huisnummer" Margin="15" Grid.Row="3" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtHuisnummer" Margin="10" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"/>
 
         <!--Rij5-->
-        <Label Content="Land" Margin="15"   Grid.Row="4" Grid.Column="0"/>
-        <TextBox Background="White" x:Name="txtLand" Margin="10" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+        <Label Content="Postcode" Margin="15"   Grid.Row="4" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtPostcode" Margin="10" Width="125" VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1"/>
+        <Label Content="Gemeente" Margin="15" Grid.Row="4" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtGemeente" Margin="10" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3"/>
 
         <!--Rij6-->
-        <Label Content="Telefoonnr" Margin="15"   Grid.Row="5" Grid.Column="0"/>
-        <TextBox Background="White" x:Name="txtTelefoonnr" Margin="10" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="1"/>
-        <Label Content="Email" Margin="15" Grid.Row="5" Grid.Column="2"/>
-        <TextBox Background="White" x:Name="txtEmail" Margin="10" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3"/>
-        
+        <Label Content="Land" Margin="15"   Grid.Row="5" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtLand" Margin="10" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="1"/>
+
         <!--Rij7-->
-        <Button x:Name="btnVoegToe" Content="Voeg Toe" Foreground="White" Background="#2F585E" Margin="100 15 15 15" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnVoegToe_Click"/>
+        <Label Content="Telefoonnr" Margin="15"   Grid.Row="6" Grid.Column="0"/>
+        <TextBox Background="White" x:Name="txtTelefoonnr" Margin="10" VerticalContentAlignment="Center" Grid.Row="6" Grid.Column="1"/>
+        <Label Content="Email" Margin="15" Grid.Row="6" Grid.Column="2"/>
+        <TextBox Background="White" x:Name="txtEmail" Margin="10" VerticalContentAlignment="Center" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3"/>
+        
+        <!--Rij8-->
+        <Label Content="Inschrijvingsdatum" Margin="15" Grid.Row="7" Grid.Column="0"/>
+        <DatePicker x:Name="dateInschrijvingsDatum" Margin="10" VerticalAlignment="Center" Grid.Row="7" Grid.Column="1"/>
+
+        <!--Rij9-->
+        <Button x:Name="btnVoegToe" Content="Voeg Toe" Foreground="White" Background="#2F585E" Margin="100 15 15 15" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Click="BtnVoegToe_Click"/>
 
     </Grid>
 </Window>
