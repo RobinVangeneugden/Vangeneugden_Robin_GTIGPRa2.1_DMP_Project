@@ -45,7 +45,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseOperations.DeleteInstrumentVanBandlid(((LidInstrument)lbBandlid.SelectedItem).lidId, ((LidInstrument)lbBandlid.SelectedItem).instrumentId);
+            DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
             lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
         }
     }

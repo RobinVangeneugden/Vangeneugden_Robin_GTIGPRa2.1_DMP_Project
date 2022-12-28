@@ -115,7 +115,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         private void BtnVoegBandlidToe_Click(object sender, RoutedEventArgs e)
         {
             
-                AddBandlid BandlidToevoegenWindow = new AddBandlid();
+                AddBandlid BandlidToevoegenWindow = new AddBandlid(this);
                 BandlidToevoegenWindow.ShowDialog();
             
         }
@@ -144,6 +144,11 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
                 lblToonInfo.Content = bandLidGroepen + Environment.NewLine + Environment.NewLine + bandLidInstrumenten + Environment.NewLine + Environment.NewLine + bandLidRepetities + Environment.NewLine + Environment.NewLine + bandLidOptredens;
             }
             
+        }
+
+        private void lblToonInfo_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
         }
     }
 }

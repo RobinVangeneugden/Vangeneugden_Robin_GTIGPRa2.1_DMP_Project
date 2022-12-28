@@ -48,7 +48,10 @@
         <Button x:Name="btnAddDeleteConcert" Content="Add/Delete Concert" Margin="15 10 15 10" Foreground="White" Background="#2F585E" FontWeight="Bold" Grid.Row="3" Grid.Column="2" Click="BtnAddDeleteConcert_Click"/>
 
         <!--Rij5 -->
-        <Label x:Name="lblToonInfo" Background="White" Margin="15" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="15" Name="ScrollViewer1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanContentScroll="True">
+            <Label x:Name="lblToonInfo" Background="White"/>
+        </ScrollViewer>
+        
     </Grid>
     
     

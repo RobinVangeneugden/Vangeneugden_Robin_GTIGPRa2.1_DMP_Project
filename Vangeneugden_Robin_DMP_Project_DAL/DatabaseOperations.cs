@@ -40,6 +40,45 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        public static bool AddBandlid(Lid lid)
+        {
+
+
+            string sql = @"INSERT INTO MUZ.Lid (Lid.id, Lid.voornaam, Lid.familienaam, Lid.geslacht, Lid.straat, Lid.huisnummer, Lid.postcode, Lid.gemeente, Lid.land, Lid.rijksregisternr, Lid.telefoon, Lid.email, Lid.inschrijvingsDatum)
+                            VALUES (@lidID, @Voornaam, @Familienaam, @Geslacht, @Straat, @Huisnummer, @Postcode, @Gemeente, @Land, @Rijksregnr, @Telefoonnr, @Email, @InschrijvingsDatum)";
+
+            var parameters = new
+            {
+                @lidID = lid.id,
+                @Voornaam = lid.voornaam,
+                @Familienaam = lid.familienaam,
+                @Geslacht = lid.geslacht,
+                @Straat = lid.straat,
+                @Huisnummer = lid.huisnummer,
+                @Gemeente = lid.gemeente,
+                @Postcode = lid.postcode,
+                @Land = lid.land,
+                @Rijksregnr = lid.rijksregisternr,
+                @Telefoonnr = lid.telefoon,
+                @Email = lid.email,
+                @InschrijvingsDatum = lid.inschrijvingsDatum
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+        }
+
         public static List<Groep> OphalenGroepen()
         {
             Start();
@@ -60,6 +99,64 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+
+        public static bool AddGroepVanBandlid(int lidID, int groepID)
+        {
+
+
+            string sql = @"INSERT INTO MUZ.LidGroep (LidGroep.lidId, LidGroep.groepId)
+                            VALUES (@lidID, @groepID)";
+
+            var parameters = new
+            {
+                @lidID = lidID,
+                @groepID = groepID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+        }
+
+        public static bool DeleteGroepVanBandlid(int lidID, int groepID)
+        {
+
+
+            string sql = @"DELETE FROM MUZ.LidGroep WHERE LidGroep.lidId = @lidID AND LidGroep.groepId = @groepID";
+
+            var parameters = new
+            {
+
+                @lidID = lidID,
+                @groepID = groepID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+
+
+        }
 
 
         public static List<Repetitie> OphalenRepetities()
@@ -154,11 +251,11 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         {
             
 
-            string sql = @"DELETE FROM MUZ.LidInstrument
-                            WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID";
+            string sql = @"DELETE MUZ.LidInstrument FROM MUZ.Lid JOIN MUZ.LidInstrument ON Lid.id = LidInstrument.lidId JOIN MUZ.Instrument ON Instrument.id = LidInstrument.instrumentId WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID";
 
             var parameters = new
             {
+
                 @lidID = lidID,
                 @instrumentID = instrumentID
             };
