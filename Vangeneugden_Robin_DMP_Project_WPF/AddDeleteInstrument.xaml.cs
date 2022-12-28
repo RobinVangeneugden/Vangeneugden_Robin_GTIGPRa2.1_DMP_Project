@@ -39,15 +39,6 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
-            foreach (Instrument instrument in lbInstrument.Items)
-            {
-                if (!lbBandlid.Items.Contains(instrument))
-                {
-                    MessageBox.Show("Bandlid bespeeld dit instrument al.", "Oeps", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-
             DatabaseOperations.AddInstrumentVanBandlid(_lidID, ((Instrument)lbInstrument.SelectedItem).id);
             lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
 
@@ -57,7 +48,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (lbBandlid.SelectedItem != null)
             {
-                DatabaseOperations.DeleteInstrumentVanBandlid(((Instrument)lbBandlid.SelectedItem).id);
+                DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
             }
             else
             {

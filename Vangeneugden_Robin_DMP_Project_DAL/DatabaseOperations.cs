@@ -297,14 +297,15 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return false;
         }
-        public static bool DeleteInstrumentVanBandlid(int instrumentID)
+        public static bool DeleteInstrumentVanBandlid(int lidID, int instrumentID)
         {
             
 
-            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.instrumentId = @instrumentID";
+            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID; DELETE FROM MUZ.LidInstrument WHERE LidInstrument.instrumentId = @instrumentID";
 
             var parameters = new
             {
+                @lidID = lidID,
                 @instrumentID = instrumentID
             };
 
