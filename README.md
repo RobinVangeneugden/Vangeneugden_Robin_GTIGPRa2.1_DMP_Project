@@ -16,3 +16,5 @@
 <p>Fourteenth Commit: Delete Bandlid laten werken, AddInstrument bij Bandlid laten werken, Gewerkt aan DeleteInstrument bij Bandlid</p>
 <p>Fifteenth Commit: Update AddBandlid en maak database operation AddBandlid aan</p>
 <p>Sixteenth Commit: AddBandlid afgewerkt</p>
+<p>Seventeenth Commit: UpdateBandlid afgewerkt</p>
+<p>Eightteenth Commit: DeleteInstrumentFromBandlid en DeleteGroepFromBandlid probeersel (not ok)</p>
