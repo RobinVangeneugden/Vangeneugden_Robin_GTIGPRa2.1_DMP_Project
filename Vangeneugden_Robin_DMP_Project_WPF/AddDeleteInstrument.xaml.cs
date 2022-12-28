@@ -45,8 +45,14 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
-            lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+            if (lbBandlid.SelectedItem != null)
+            {
+                DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
+            }
+            else
+            {
+                MessageBox.Show("Selecteer een het te verwijderen instrument!");
+            }
         }
     }
 }

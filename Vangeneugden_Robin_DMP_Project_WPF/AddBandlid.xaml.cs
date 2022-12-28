@@ -33,23 +33,17 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             string error = Valideer();
             string geslacht = "";
 
-            if (geslacht == "M")
+            if (cbMan.IsChecked == true)
             {
-                cbMan.IsChecked = true;
-                cbVrouw.IsChecked = false;
-                cbNeutraal.IsChecked = false;
+                geslacht = "M";
             }
-            else if (geslacht == "V")
+            else if (cbVrouw.IsChecked == true)
             {
-                cbVrouw.IsChecked = true;
-                cbMan.IsChecked = false;
-                cbNeutraal.IsChecked = false;
+                geslacht = "V";
             }
             else
             {
-                cbNeutraal.IsChecked = true;
-                cbMan.IsChecked = false;
-                cbVrouw.IsChecked = false;
+                geslacht = "X";
             }
 
             
@@ -73,7 +67,9 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
                     inschrijvingsDatum = dateInschrijvingsDatum.SelectedDate.Value
                 };
                 DatabaseOperations.AddBandlid(lid);
-                _mainWindow.cmbBandlid.Items.Refresh();
+                _mainWindow.cmbBandlid.ItemsSource = DatabaseOperations.OphalenLeden();
+                MessageBox.Show("Bandlid is toegevoegd", "Toevoegen succesvol", MessageBoxButton.OK, MessageBoxImage.Information);
+                ResetFormulier();
             }
             else
             {
@@ -136,6 +132,25 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
             return fout;
 
+        }
+
+        private void ResetFormulier()
+        {
+            txtBandlidnr.Text = "";
+            txtVoornaam.Text = "";
+            cbMan.IsChecked = false;
+            cbVrouw.IsChecked = false;
+            cbNeutraal.IsChecked = false;
+            txtFamilienaam.Text = "";
+            txtStraat.Text = "";
+            txtHuisnummer.Text = "";
+            txtPostcode.Text = "";
+            txtGemeente.Text = "";
+            txtLand.Text = "";
+            txtRijksregnr.Text = "";
+            txtTelefoonnr.Text = "";
+            txtEmail.Text = "";
+            dateInschrijvingsDatum.SelectedDate = DateTime.Parse("01/01/1001");
         }
 
         private void CbMan_Checked(object sender, RoutedEventArgs e)

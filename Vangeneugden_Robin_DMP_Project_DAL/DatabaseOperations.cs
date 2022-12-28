@@ -251,7 +251,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         {
             
 
-            string sql = @"DELETE MUZ.LidInstrument FROM MUZ.Lid JOIN MUZ.LidInstrument ON Lid.id = LidInstrument.lidId JOIN MUZ.Instrument ON Instrument.id = LidInstrument.instrumentId WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID";
+            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID";
 
             var parameters = new
             {

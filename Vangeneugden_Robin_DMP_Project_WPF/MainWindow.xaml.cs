@@ -92,7 +92,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             else
             {
                 DatabaseOperations.DeleteBandlid(((Lid)cmbBandlid.SelectedItem).id);
-                MessageBox.Show("Bandlid succesvol verwijderd!", "Bandlid Verwijderen", MessageBoxButton.OK, MessageBoxImage.Hand);
+                MessageBox.Show("Bandlid succesvol verwijderd!", "Bandlid Verwijderen", MessageBoxButton.OK, MessageBoxImage.Information);
                 cmbBandlid.Items.Refresh();
 
             }
