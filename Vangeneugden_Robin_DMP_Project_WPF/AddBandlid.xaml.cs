@@ -73,7 +73,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             }
             else
             {
-                MessageBox.Show(error);
+                MessageBox.Show(error, "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

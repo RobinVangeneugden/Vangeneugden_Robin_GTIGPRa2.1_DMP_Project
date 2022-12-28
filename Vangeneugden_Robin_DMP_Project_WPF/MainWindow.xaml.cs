@@ -145,10 +145,5 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             }
             
         }
-
-        private void lblToonInfo_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
-        }
     }
 }

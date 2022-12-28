@@ -39,19 +39,29 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
+
+            foreach (Instrument instrument in lbInstrument.Items)
+            {
+                if (!lbBandlid.Items.Contains(instrument))
+                {
+                    MessageBox.Show("Bandlid bespeeld dit instrument al.", "Oeps", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
             DatabaseOperations.AddInstrumentVanBandlid(_lidID, ((Instrument)lbInstrument.SelectedItem).id);
             lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (lbBandlid.SelectedItem != null)
             {
-                DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
+                DatabaseOperations.DeleteInstrumentVanBandlid(((Instrument)lbBandlid.SelectedItem).id);
             }
             else
             {
-                MessageBox.Show("Selecteer een het te verwijderen instrument!");
+                MessageBox.Show("Selecteer het te verwijderen instrument!");
             }
         }
     }

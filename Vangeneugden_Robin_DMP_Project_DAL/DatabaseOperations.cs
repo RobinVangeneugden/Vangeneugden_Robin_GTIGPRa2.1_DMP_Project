@@ -79,6 +79,56 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return false;
         }
 
+        public static bool UpdateBandlid(Lid lid)
+        {
+
+
+            string sql = @"UPDATE MUZ.Lid SET   Lid.voornaam = @Voornaam, 
+                                                Lid.familienaam = @Familienaam, 
+                                                Lid.geslacht = @Geslacht, 
+                                                Lid.straat = @Straat, 
+                                                Lid.huisnummer = @Huisnummer, 
+                                                Lid.postcode = @Postcode, 
+                                                Lid.gemeente = @Gemeente, 
+                                                Lid.land = @Land, 
+                                                Lid.rijksregisternr = @Rijksregnr, 
+                                                Lid.telefoon = @Telefoonnr, 
+                                                Lid.email = @Email, 
+                                                Lid.inschrijvingsDatum = @InschrijvingsDatum
+                                        WHERE Lid.id = @lidID"; 
+
+            var parameters = new
+            {
+                @lidID = lid.id,
+                @Voornaam = lid.voornaam,
+                @Familienaam = lid.familienaam,
+                @Geslacht = lid.geslacht,
+                @Straat = lid.straat,
+                @Huisnummer = lid.huisnummer,
+                @Gemeente = lid.gemeente,
+                @Postcode = lid.postcode,
+                @Land = lid.land,
+                @Rijksregnr = lid.rijksregisternr,
+                @Telefoonnr = lid.telefoon,
+                @Email = lid.email,
+                @InschrijvingsDatum = lid.inschrijvingsDatum
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+        }
+
         public static List<Groep> OphalenGroepen()
         {
             Start();
@@ -247,16 +297,14 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return false;
         }
-        public static bool DeleteInstrumentVanBandlid(int lidID, int instrumentID)
+        public static bool DeleteInstrumentVanBandlid(int instrumentID)
         {
             
 
-            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID";
+            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.instrumentId = @instrumentID";
 
             var parameters = new
             {
-
-                @lidID = lidID,
                 @instrumentID = instrumentID
             };
 
