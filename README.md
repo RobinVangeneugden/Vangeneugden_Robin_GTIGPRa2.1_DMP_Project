@@ -14,3 +14,4 @@
 <p>Twelfth Commit: Toon Info update</p>
 <p>Thirteenth Commit: Aanpassen design AddBandlid en UpdataBandlid + textboxen UpdataBandlid opvullen</p>
 <p>Fourteenth Commit: Delete Bandlid laten werken, AddInstrument bij Bandlid laten werken, Gewerkt aan DeleteInstrument bij Bandlid</p>
+<p>Fifteenth Commit: Update AddBandlid en maak database operation AddBandlid aan</p>
