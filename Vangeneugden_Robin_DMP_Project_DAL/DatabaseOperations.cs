@@ -129,6 +129,16 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return false;
         }
 
+        public static List<Locatie> OphalenLocaties()
+        {
+            Start();
+            var result = _muziekbandDb.Connectie.Query<Locatie>("SELECT * FROM MUZ.Locatie").ToList();
+
+            _muziekbandDb.Close();
+
+            return result;
+        }
+
         public static List<Groep> OphalenGroepen()
         {
             Start();
@@ -154,7 +164,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         {
 
 
-            string sql = @"INSERT INTO MUZ.LidGroep (LidGroep.lidId, LidGroep.groepId)
+            string sql = @" IF NOT EXISTS (SELECT * FROM MUZ.LidGroep WHERE LidGroep.lidId = @lidID AND LidGroep.groepId = @groepID)
+                            INSERT INTO MUZ.LidGroep (LidGroep.lidId, LidGroep.groepId)
                             VALUES (@lidID, @groepID)";
 
             var parameters = new
@@ -274,7 +285,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         {
             
 
-            string sql = @"INSERT INTO MUZ.LidInstrument (LidInstrument.lidId, LidInstrument.instrumentId)
+            string sql = @" IF NOT EXISTS (SELECT * FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID)
+                            INSERT INTO MUZ.LidInstrument (LidInstrument.lidId, LidInstrument.instrumentId)
                             VALUES (@lidID, @instrumentID)";
 
             var parameters = new
@@ -301,7 +313,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         {
             
 
-            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID; DELETE FROM MUZ.LidInstrument WHERE LidInstrument.instrumentId = @instrumentID";
+            string sql = @" IF EXISTS (SELECT * FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID)
+                            DELETE FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID; DELETE FROM MUZ.LidInstrument WHERE LidInstrument.instrumentId = @instrumentID";
 
             var parameters = new
             {

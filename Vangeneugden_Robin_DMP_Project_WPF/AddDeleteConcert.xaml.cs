@@ -33,8 +33,35 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             lblBandlid.Content = _mainWindow.cmbBandlid.Text;
-            lbBandlid.ItemsSource = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
-            lbConcert.ItemsSource = DatabaseOperations.OphalenOptredens();
+            List<Optreden> optredensBandlid = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
+            List<Optreden> optredens = DatabaseOperations.OphalenOptredens();
+            List<Locatie> locaties = DatabaseOperations.OphalenLocaties();
+
+            foreach (Optreden optreden in optredensBandlid)
+            {
+                foreach (Locatie locatie in locaties)
+                {
+                    if (optreden.locatieId == locatie.id)
+                    {
+                        lbBandlid .Items.Add(optreden + " in " + locatie.naam + " te " + locatie.gemeente);
+                    }
+
+                }
+
+            }
+
+            foreach (Optreden optreden in optredens)
+            {
+                foreach (Locatie locatie in locaties)
+                {
+                    if (optreden.locatieId == locatie.id)
+                    {
+                        lbConcert.Items.Add(optreden + " in " + locatie.naam + " te " + locatie.gemeente);
+                    }
+                    
+                }
+                
+            }
         }
     }
 }
