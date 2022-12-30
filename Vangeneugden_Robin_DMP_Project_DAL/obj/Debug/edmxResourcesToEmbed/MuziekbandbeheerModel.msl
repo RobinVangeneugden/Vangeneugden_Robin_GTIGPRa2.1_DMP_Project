@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MuziekbandbeheerModelStoreContainer" CdmEntityContainer="MuziekbandBeheerEntities">
+  <EntityContainerMapping StorageEntityContainer="MuziekbandbeheerModelStoreContainer" CdmEntityContainer="MuziekbandbeheerEntities">
     <EntitySetMapping Name="Groep">
       <EntityTypeMapping TypeName="MuziekbandbeheerModel.Groep">
         <MappingFragment StoreEntitySet="Groep">
@@ -76,6 +76,24 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="lidId" ColumnName="lidId" />
           <ScalarProperty Name="instrumentId" ColumnName="instrumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LidOptreden">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.LidOptreden">
+        <MappingFragment StoreEntitySet="LidOptreden">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lidId" ColumnName="lidId" />
+          <ScalarProperty Name="optredenId" ColumnName="optredenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LidRepetitie">
+      <EntityTypeMapping TypeName="MuziekbandbeheerModel.LidRepetitie">
+        <MappingFragment StoreEntitySet="LidRepetitie">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="lidId" ColumnName="lidId" />
+          <ScalarProperty Name="repetitieId" ColumnName="repetitieId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

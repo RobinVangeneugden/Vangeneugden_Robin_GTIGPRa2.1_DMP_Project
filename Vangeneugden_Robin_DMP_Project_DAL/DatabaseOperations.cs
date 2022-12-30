@@ -207,7 +207,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
 
 
-            if (affectedRows >= 1)
+            if (affectedRows == 1)
             {
                 return true;
             }
@@ -233,11 +233,69 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public static List<Repetitie> OphalenRepetitiesVanBandlid(int lidID)
         {
             Start();
-            var result = _muziekbandDb.Connectie.Query<Repetitie>("SELECT DISTINCT Repetitie.* FROM MUZ.Repetitie INNER JOIN MUZ.GroepRepetitie ON Repetitie.id = GroepRepetitie.repetitieId INNER JOIN MUZ.Groep ON Groep.id = GroepRepetitie.groepId INNER JOIN MUZ.LidGroep ON Groep.id = LidGroep.groepId INNER JOIN MUZ.Lid ON Lid.id = LidGroep.lidId WHERE Lid.id = @lidID", param: new { lidID }).ToList();
+            var result = _muziekbandDb.Connectie.Query<Repetitie>("SELECT DISTINCT Repetitie.* FROM MUZ.Repetitie INNER JOIN MUZ.LidRepetitie ON Repetitie.id = LidRepetitie.repetitieId INNER JOIN MUZ.Lid ON Lid.id = LidRepetitie.lidId WHERE Lid.id = @lidID", param: new { lidID }).ToList();
 
             _muziekbandDb.Close();
 
             return result;
+        }
+
+        public static bool AddRepetitiesVanBandlid(int lidID, int repetitieID)
+        {
+
+
+            string sql = @" IF NOT EXISTS (SELECT * FROM MUZ.LidRepetitie WHERE LidRepetitie.lidId = @lidID AND LidRepetitie.repetitieId = @repetitieID)
+                            INSERT INTO MUZ.LidRepetitie (LidRepetitie.lidId, LidRepetitie.repetitieId)
+                            VALUES (@lidID, @repetitieID)";
+
+            var parameters = new
+            {
+                @lidID = lidID,
+                @repetitieID = repetitieID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+        }
+
+        public static bool DeleteRepetitieVanBandlid(int lidID, int repetitieID)
+        {
+
+
+            string sql = @"DELETE FROM MUZ.LidRepetitie WHERE LidRepetitie.repetitieId = @repetitieID AND LidRepetitie.lidId = @lidID";
+
+            var parameters = new
+            {
+                @lidID = lidID,
+                @repetitieID = repetitieID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+
+
         }
 
         public static List<Optreden> OphalenOptredens()
@@ -253,11 +311,69 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public static List<Optreden> OphalenOptredensVanBandlid(int lidID)
         {
             Start();
-            var result = _muziekbandDb.Connectie.Query<Optreden>("SELECT DISTINCT Optreden.* FROM MUZ.Optreden INNER JOIN MUZ.GroepOptreden ON Optreden.id = GroepOptreden.optredenId LEFT JOIN MUZ.Groep ON Groep.id = GroepOptreden.groepId LEFT JOIN MUZ.LidGroep ON Groep.id = LidGroep.groepId LEFT JOIN MUZ.Lid ON Lid.id = LidGroep.lidId WHERE Lid.id = @lidID", param: new { lidID }).ToList();
+            var result = _muziekbandDb.Connectie.Query<Optreden>("SELECT DISTINCT Optreden.* FROM MUZ.Optreden INNER JOIN MUZ.LidOptreden ON Optreden.id = LidOptreden.optredenId INNER JOIN MUZ.Lid ON Lid.id = LidOptreden.lidId WHERE Lid.id = @lidID", param: new { lidID }).ToList();
 
             _muziekbandDb.Close();
 
             return result;
+        }
+
+        public static bool AddOptredensVanBandlid(int lidID, int optredenID)
+        {
+
+
+            string sql = @" IF NOT EXISTS (SELECT * FROM MUZ.LidOptreden WHERE LidOptreden.lidId = @lidID AND LidOptreden.optredenId = @optredenID)
+                            INSERT INTO MUZ.LidOptreden (LidOptreden.lidId, LidOptreden.optredenId)
+                            VALUES (@lidID, @optredenID)";
+
+            var parameters = new
+            {
+                @lidID = lidID,
+                @optredenID = optredenID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+        }
+
+        public static bool DeleteOptredenVanBandlid(int lidID, int optredenID)
+        {
+
+
+            string sql = @"DELETE FROM MUZ.LidOptreden WHERE LidOptreden.optredenId = @optredenID AND LidOptreden.lidId = @lidID";
+
+            var parameters = new
+            {
+                @lidID = lidID,
+                @optredenID = optredenID
+            };
+
+            Start();
+
+            var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
+
+
+            if (affectedRows >= 1)
+            {
+                return true;
+            }
+
+            _muziekbandDb.Close();
+
+            return false;
+
+
         }
 
         public static List<Instrument> OphalenInstrumenten()
@@ -311,10 +427,9 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         }
         public static bool DeleteInstrumentVanBandlid(int lidID, int instrumentID)
         {
-            
 
-            string sql = @" IF EXISTS (SELECT * FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID AND LidInstrument.instrumentId = @instrumentID)
-                            DELETE FROM MUZ.LidInstrument WHERE LidInstrument.lidId = @lidID; DELETE FROM MUZ.LidInstrument WHERE LidInstrument.instrumentId = @instrumentID";
+
+            string sql = @"DELETE FROM MUZ.LidInstrument WHERE LidInstrument.instrumentId = @instrumentID AND LidInstrument.lidId = @lidID";
 
             var parameters = new
             {
@@ -326,7 +441,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             var affectedRows = _muziekbandDb.Connectie.Execute(sql, parameters);
 
-            
+
             if (affectedRows >= 1)
             {
                 return true;
@@ -336,7 +451,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return false;
 
-            
+
         }
 
         public static bool DeleteBandlid(int lidID)

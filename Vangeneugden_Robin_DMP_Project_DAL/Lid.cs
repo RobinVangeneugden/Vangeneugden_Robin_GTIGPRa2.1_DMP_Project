@@ -20,6 +20,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             this.Groep = new HashSet<Groep>();
             this.LidGroep = new HashSet<LidGroep>();
             this.LidInstrument = new HashSet<LidInstrument>();
+            this.LidOptreden = new HashSet<LidOptreden>();
+            this.LidRepetitie = new HashSet<LidRepetitie>();
         }
     
         public int id { get; set; }
@@ -42,6 +44,10 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public virtual ICollection<LidGroep> LidGroep { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LidInstrument> LidInstrument { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LidOptreden> LidOptreden { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LidRepetitie> LidRepetitie { get; set; }
 
         public override string ToString()
         {

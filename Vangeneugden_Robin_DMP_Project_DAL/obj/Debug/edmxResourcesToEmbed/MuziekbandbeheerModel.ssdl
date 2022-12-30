@@ -71,6 +71,22 @@
     <Property Name="lidId" Type="int" Nullable="false" />
     <Property Name="instrumentId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="LidOptreden">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lidId" Type="int" Nullable="false" />
+    <Property Name="optredenId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LidRepetitie">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lidId" Type="int" Nullable="false" />
+    <Property Name="repetitieId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Locatie">
     <Key>
       <PropertyRef Name="id" />
@@ -208,6 +224,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LidOptreden_Lid">
+    <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+    <End Role="LidOptreden" Type="Self.LidOptreden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lid">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidOptreden">
+        <PropertyRef Name="lidId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LidOptreden_Optreden">
+    <End Role="Optreden" Type="Self.Optreden" Multiplicity="1" />
+    <End Role="LidOptreden" Type="Self.LidOptreden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Optreden">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidOptreden">
+        <PropertyRef Name="optredenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LidRepetitie_Lid">
+    <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+    <End Role="LidRepetitie" Type="Self.LidRepetitie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lid">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidRepetitie">
+        <PropertyRef Name="lidId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LidRepetitie_Repetitie">
+    <End Role="Repetitie" Type="Self.Repetitie" Multiplicity="1" />
+    <End Role="LidRepetitie" Type="Self.LidRepetitie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Repetitie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidRepetitie">
+        <PropertyRef Name="repetitieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Optreden_Locatie">
     <End Role="Locatie" Type="Self.Locatie" Multiplicity="1" />
     <End Role="Optreden" Type="Self.Optreden" Multiplicity="*" />
@@ -240,6 +304,8 @@
     <EntitySet Name="Lid" EntityType="Self.Lid" Schema="MUZ" store:Type="Tables" />
     <EntitySet Name="LidGroep" EntityType="Self.LidGroep" Schema="MUZ" store:Type="Tables" />
     <EntitySet Name="LidInstrument" EntityType="Self.LidInstrument" Schema="MUZ" store:Type="Tables" />
+    <EntitySet Name="LidOptreden" EntityType="Self.LidOptreden" Schema="MUZ" store:Type="Tables" />
+    <EntitySet Name="LidRepetitie" EntityType="Self.LidRepetitie" Schema="MUZ" store:Type="Tables" />
     <EntitySet Name="Locatie" EntityType="Self.Locatie" Schema="MUZ" store:Type="Tables" />
     <EntitySet Name="Optreden" EntityType="Self.Optreden" Schema="MUZ" store:Type="Tables" />
     <EntitySet Name="Repetitie" EntityType="Self.Repetitie" Schema="MUZ" store:Type="Tables" />
@@ -278,6 +344,22 @@
     <AssociationSet Name="FK_LidInstrument_Lid" Association="Self.FK_LidInstrument_Lid">
       <End Role="Lid" EntitySet="Lid" />
       <End Role="LidInstrument" EntitySet="LidInstrument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidOptreden_Lid" Association="Self.FK_LidOptreden_Lid">
+      <End Role="Lid" EntitySet="Lid" />
+      <End Role="LidOptreden" EntitySet="LidOptreden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidOptreden_Optreden" Association="Self.FK_LidOptreden_Optreden">
+      <End Role="Optreden" EntitySet="Optreden" />
+      <End Role="LidOptreden" EntitySet="LidOptreden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidRepetitie_Lid" Association="Self.FK_LidRepetitie_Lid">
+      <End Role="Lid" EntitySet="Lid" />
+      <End Role="LidRepetitie" EntitySet="LidRepetitie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidRepetitie_Repetitie" Association="Self.FK_LidRepetitie_Repetitie">
+      <End Role="Repetitie" EntitySet="Repetitie" />
+      <End Role="LidRepetitie" EntitySet="LidRepetitie" />
     </AssociationSet>
     <AssociationSet Name="FK_Optreden_Locatie" Association="Self.FK_Optreden_Locatie">
       <End Role="Locatie" EntitySet="Locatie" />

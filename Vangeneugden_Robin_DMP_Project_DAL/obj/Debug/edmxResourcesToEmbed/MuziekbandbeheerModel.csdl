@@ -66,6 +66,8 @@
     <NavigationProperty Name="Groep" Relationship="Self.FK_Groep_Dirigent" FromRole="Lid" ToRole="Groep" />
     <NavigationProperty Name="LidGroep" Relationship="Self.FK_LidGroep_Lid" FromRole="Lid" ToRole="LidGroep" />
     <NavigationProperty Name="LidInstrument" Relationship="Self.FK_LidInstrument_Lid" FromRole="Lid" ToRole="LidInstrument" />
+    <NavigationProperty Name="LidOptreden" Relationship="Self.FK_LidOptreden_Lid" FromRole="Lid" ToRole="LidOptreden" />
+    <NavigationProperty Name="LidRepetitie" Relationship="Self.FK_LidRepetitie_Lid" FromRole="Lid" ToRole="LidRepetitie" />
   </EntityType>
   <EntityType Name="LidGroep">
     <Key>
@@ -86,6 +88,26 @@
     <Property Name="instrumentId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Instrument" Relationship="Self.FK_LidInstrument_Instrument" FromRole="LidInstrument" ToRole="Instrument" />
     <NavigationProperty Name="Lid" Relationship="Self.FK_LidInstrument_Lid" FromRole="LidInstrument" ToRole="Lid" />
+  </EntityType>
+  <EntityType Name="LidOptreden">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lidId" Type="Int32" Nullable="false" />
+    <Property Name="optredenId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Lid" Relationship="Self.FK_LidOptreden_Lid" FromRole="LidOptreden" ToRole="Lid" />
+    <NavigationProperty Name="Optreden" Relationship="Self.FK_LidOptreden_Optreden" FromRole="LidOptreden" ToRole="Optreden" />
+  </EntityType>
+  <EntityType Name="LidRepetitie">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lidId" Type="Int32" Nullable="false" />
+    <Property Name="repetitieId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Lid" Relationship="Self.FK_LidRepetitie_Lid" FromRole="LidRepetitie" ToRole="Lid" />
+    <NavigationProperty Name="Repetitie" Relationship="Self.FK_LidRepetitie_Repetitie" FromRole="LidRepetitie" ToRole="Repetitie" />
   </EntityType>
   <EntityType Name="Locatie">
     <Key>
@@ -110,6 +132,7 @@
     <Property Name="omschrijving" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="locatieId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="GroepOptreden" Relationship="Self.FK_GroepOptreden_Optreden" FromRole="Optreden" ToRole="GroepOptreden" />
+    <NavigationProperty Name="LidOptreden" Relationship="Self.FK_LidOptreden_Optreden" FromRole="Optreden" ToRole="LidOptreden" />
     <NavigationProperty Name="Locatie" Relationship="Self.FK_Optreden_Locatie" FromRole="Optreden" ToRole="Locatie" />
   </EntityType>
   <EntityType Name="Repetitie">
@@ -120,6 +143,7 @@
     <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="locatieId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="GroepRepetitie" Relationship="Self.FK_GroepRepetitie_Repetitie" FromRole="Repetitie" ToRole="GroepRepetitie" />
+    <NavigationProperty Name="LidRepetitie" Relationship="Self.FK_LidRepetitie_Repetitie" FromRole="Repetitie" ToRole="LidRepetitie" />
     <NavigationProperty Name="Locatie" Relationship="Self.FK_Repetitie_Locatie" FromRole="Repetitie" ToRole="Locatie" />
   </EntityType>
   <Association Name="FK_Groep_Dirigent">
@@ -230,6 +254,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LidOptreden_Lid">
+    <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+    <End Role="LidOptreden" Type="Self.LidOptreden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lid">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidOptreden">
+        <PropertyRef Name="lidId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LidRepetitie_Lid">
+    <End Role="Lid" Type="Self.Lid" Multiplicity="1" />
+    <End Role="LidRepetitie" Type="Self.LidRepetitie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lid">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidRepetitie">
+        <PropertyRef Name="lidId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LidOptreden_Optreden">
+    <End Role="Optreden" Type="Self.Optreden" Multiplicity="1" />
+    <End Role="LidOptreden" Type="Self.LidOptreden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Optreden">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidOptreden">
+        <PropertyRef Name="optredenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LidRepetitie_Repetitie">
+    <End Role="Repetitie" Type="Self.Repetitie" Multiplicity="1" />
+    <End Role="LidRepetitie" Type="Self.LidRepetitie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Repetitie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="LidRepetitie">
+        <PropertyRef Name="repetitieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Optreden_Locatie">
     <End Role="Locatie" Type="Self.Locatie" Multiplicity="1" />
     <End Role="Optreden" Type="Self.Optreden" Multiplicity="*" />
@@ -254,7 +326,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MuziekbandBeheerEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="MuziekbandbeheerEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Groep" EntityType="Self.Groep" />
     <EntitySet Name="GroepOptreden" EntityType="Self.GroepOptreden" />
     <EntitySet Name="GroepRepetitie" EntityType="Self.GroepRepetitie" />
@@ -262,6 +334,8 @@
     <EntitySet Name="Lid" EntityType="Self.Lid" />
     <EntitySet Name="LidGroep" EntityType="Self.LidGroep" />
     <EntitySet Name="LidInstrument" EntityType="Self.LidInstrument" />
+    <EntitySet Name="LidOptreden" EntityType="Self.LidOptreden" />
+    <EntitySet Name="LidRepetitie" EntityType="Self.LidRepetitie" />
     <EntitySet Name="Locatie" EntityType="Self.Locatie" />
     <EntitySet Name="Optreden" EntityType="Self.Optreden" />
     <EntitySet Name="Repetitie" EntityType="Self.Repetitie" />
@@ -300,6 +374,22 @@
     <AssociationSet Name="FK_LidInstrument_Lid" Association="Self.FK_LidInstrument_Lid">
       <End Role="Lid" EntitySet="Lid" />
       <End Role="LidInstrument" EntitySet="LidInstrument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidOptreden_Lid" Association="Self.FK_LidOptreden_Lid">
+      <End Role="Lid" EntitySet="Lid" />
+      <End Role="LidOptreden" EntitySet="LidOptreden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidRepetitie_Lid" Association="Self.FK_LidRepetitie_Lid">
+      <End Role="Lid" EntitySet="Lid" />
+      <End Role="LidRepetitie" EntitySet="LidRepetitie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidOptreden_Optreden" Association="Self.FK_LidOptreden_Optreden">
+      <End Role="Optreden" EntitySet="Optreden" />
+      <End Role="LidOptreden" EntitySet="LidOptreden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LidRepetitie_Repetitie" Association="Self.FK_LidRepetitie_Repetitie">
+      <End Role="Repetitie" EntitySet="Repetitie" />
+      <End Role="LidRepetitie" EntitySet="LidRepetitie" />
     </AssociationSet>
     <AssociationSet Name="FK_Optreden_Locatie" Association="Self.FK_Optreden_Locatie">
       <End Role="Locatie" EntitySet="Locatie" />

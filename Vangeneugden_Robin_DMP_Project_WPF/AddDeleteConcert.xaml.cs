@@ -33,34 +33,49 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             lblBandlid.Content = _mainWindow.cmbBandlid.Text;
-            List<Optreden> optredensBandlid = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
-            List<Optreden> optredens = DatabaseOperations.OphalenOptredens();
-            List<Locatie> locaties = DatabaseOperations.OphalenLocaties();
+            lbConcert.ItemsSource = DatabaseOperations.OphalenOptredens();
+            lbBandlid.ItemsSource = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
+        }
 
-            foreach (Optreden optreden in optredensBandlid)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbConcert.SelectedItem != null)
             {
-                foreach (Locatie locatie in locaties)
-                {
-                    if (optreden.locatieId == locatie.id)
-                    {
-                        lbBandlid .Items.Add(optreden + " in " + locatie.naam + " te " + locatie.gemeente);
-                    }
-
-                }
-
+                DatabaseOperations.AddOptredensVanBandlid(_lidID, ((Optreden)lbConcert.SelectedItem).id);
+                lbBandlid.ItemsSource = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
             }
-
-            foreach (Optreden optreden in optredens)
+            else if (lbBandlid.SelectedItem != null)
             {
-                foreach (Locatie locatie in locaties)
+                MessageBox.Show("Een optreden uit deze lijst kan niet toegevoegd worden!");
+            }
+            else
+            {
+                MessageBox.Show("Selecteer het toe te voegen optreden!");
+            }
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbBandlid.SelectedItem != null)
+            {
+                if (MessageBox.Show("Wil je het optreden uit deze lijst verwijderen?", "Optreden verwijderen?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
-                    if (optreden.locatieId == locatie.id)
-                    {
-                        lbConcert.Items.Add(optreden + " in " + locatie.naam + " te " + locatie.gemeente);
-                    }
-                    
+                    MessageBox.Show("Fijn dat je nog meedoet aan het optreden!");
                 }
-                
+                else
+                {
+                    DatabaseOperations.DeleteOptredenVanBandlid(_lidID, ((Optreden)lbBandlid.SelectedItem).id);
+                    MessageBox.Show("Het optreden is succesvol verwijderd!", "Optreden Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
+                    lbBandlid.ItemsSource = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
+                }
+            }
+            else if (lbConcert.SelectedItem != null)
+            {
+                MessageBox.Show("Een optreden uit deze lijst kan niet verwijderd worden!");
+            }
+            else
+            {
+                MessageBox.Show("Selecteer het te verwijderen optreden!");
             }
         }
     }

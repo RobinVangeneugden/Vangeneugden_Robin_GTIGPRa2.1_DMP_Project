@@ -30,7 +30,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             try
             {
                 //Connectie = new SqlConnection(ConfigurationManager.ConnectionStrings["TestEntities"].ConnectionString);
-                Connectie = new SqlConnection("server=(localdb)\\mssqllocaldb;Database=Muziekband;MultipleActiveResultSets=True;");
+                Connectie = new SqlConnection("server=(localdb)\\mssqllocaldb;Database=MuziekbandBeheer;MultipleActiveResultSets=True;");
             }
             catch (Exception ex)
             {

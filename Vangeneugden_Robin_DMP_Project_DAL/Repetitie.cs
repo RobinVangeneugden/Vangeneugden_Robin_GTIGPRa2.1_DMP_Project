@@ -11,6 +11,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     
     public partial class Repetitie
     {
@@ -18,6 +20,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public Repetitie()
         {
             this.GroepRepetitie = new HashSet<GroepRepetitie>();
+            this.LidRepetitie = new HashSet<LidRepetitie>();
         }
     
         public int id { get; set; }
@@ -26,11 +29,13 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GroepRepetitie> GroepRepetitie { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LidRepetitie> LidRepetitie { get; set; }
         public virtual Locatie Locatie { get; set; }
 
         public override string ToString()
         {
-            return omschrijving;
+            return omschrijving + " " + Locatie;
         }
     }
 }

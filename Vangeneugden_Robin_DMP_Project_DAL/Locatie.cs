@@ -11,6 +11,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     
     public partial class Locatie
     {
@@ -37,7 +39,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
         public override string ToString()
         {
-            return naam + " in " + gemeente;
+            return " in " + naam + " te " + gemeente;
         }
     }
 }

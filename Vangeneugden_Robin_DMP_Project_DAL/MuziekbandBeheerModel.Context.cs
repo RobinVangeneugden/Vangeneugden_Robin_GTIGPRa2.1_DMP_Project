@@ -13,10 +13,10 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MuziekbandBeheerEntities : DbContext
+    public partial class MuziekbandbeheerEntities : DbContext
     {
-        public MuziekbandBeheerEntities()
-            : base("name=MuziekbandBeheerEntities")
+        public MuziekbandbeheerEntities()
+            : base("name=MuziekbandbeheerEntities")
         {
         }
     
@@ -32,6 +32,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public virtual DbSet<Lid> Lid { get; set; }
         public virtual DbSet<LidGroep> LidGroep { get; set; }
         public virtual DbSet<LidInstrument> LidInstrument { get; set; }
+        public virtual DbSet<LidOptreden> LidOptreden { get; set; }
+        public virtual DbSet<LidRepetitie> LidRepetitie { get; set; }
         public virtual DbSet<Locatie> Locatie { get; set; }
         public virtual DbSet<Optreden> Optreden { get; set; }
         public virtual DbSet<Repetitie> Repetitie { get; set; }

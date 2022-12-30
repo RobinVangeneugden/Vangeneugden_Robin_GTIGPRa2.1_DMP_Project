@@ -39,9 +39,19 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (lbInstrument.SelectedItem != null)
+            {
                 DatabaseOperations.AddInstrumentVanBandlid(_lidID, ((Instrument)lbInstrument.SelectedItem).id);
                 lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+            }
+            else if (lbBandlid.SelectedItem != null)
+            {
+                MessageBox.Show("Een instrument uit deze lijst kan niet toegevoegd worden!");
+            }
+            else
+            {
+                MessageBox.Show("Selecteer het toe te voegen instrument!");
+            }
             
         }
 
@@ -49,8 +59,20 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (lbBandlid.SelectedItem != null)
             {
-                DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
-                lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+                if (MessageBox.Show("Wil je instrument uit deze lijst verwijderen?", "Instrument verwijderen?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Keep playing!");
+                }
+                else
+                {
+                    DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
+                    MessageBox.Show("Instrument is succesvol verwijderd!", "Instrument Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
+                    lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+                }
+            }
+            else if (lbInstrument.SelectedItem != null)
+            {
+                MessageBox.Show("Een instrument uit deze lijst kan niet verwijderd worden!");
             }
             else
             {

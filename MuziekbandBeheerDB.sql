@@ -1,13 +1,15 @@
-﻿DROP TABLE IF EXISTS GroepRepetitie;
-DROP TABLE IF EXISTS GroepOptreden;
-DROP TABLE IF EXISTS LidGroep;
-DROP TABLE IF EXISTS Repetitie;
-DROP TABLE IF EXISTS Optreden;
-DROP TABLE IF EXISTS Locatie;
-DROP TABLE IF EXISTS Groep;
-DROP TABLE IF EXISTS LidInstrument;
-DROP TABLE IF EXISTS Lid;
-DROP TABLE IF EXISTS Instrument;
+﻿DROP TABLE IF EXISTS MUZ.GroepRepetitie;
+DROP TABLE IF EXISTS MUZ.GroepOptreden;
+DROP TABLE IF EXISTS MUZ.LidGroep;
+DROP TABLE IF EXISTS MUZ.LidRepetitie;
+DROP TABLE IF EXISTS MUZ.LidOptreden;
+DROP TABLE IF EXISTS MUZ.Repetitie;
+DROP TABLE IF EXISTS MUZ.Optreden;
+DROP TABLE IF EXISTS MUZ.Locatie;
+DROP TABLE IF EXISTS MUZ.Groep;
+DROP TABLE IF EXISTS MUZ.LidInstrument;
+DROP TABLE IF EXISTS MUZ.Lid;
+DROP TABLE IF EXISTS MUZ.Instrument;
 DROP INDEX IF EXISTS Lid.AK_Lid_rijksregisternr;
 DROP INDEX IF EXISTS Lid.AK_Lid_email;
 DROP INDEX IF EXISTS Instrument.AK_Instrument_artikelNummer;
@@ -220,6 +222,21 @@ INSERT INTO MUZ.Repetitie
 			('Repetitie Orkest met Drumband & Majorettes - Inoefenen van Muziekpartituren met Drums en dans', 2),
 			('Repetitie Majorettes - Inoefenen van dans', 1);
 
+CREATE TABLE MUZ.LidRepetitie
+(
+	id				int			IDENTITY(1,1),
+	lidId			int			NOT NULL,
+	repetitieId		int			NOT NULL,
+	CONSTRAINT PK_LidRepetitie
+		PRIMARY KEY (id),
+	CONSTRAINT FK_LidRepetitie_Lid
+		FOREIGN KEY(lidId)
+			REFERENCES MUZ.Lid(id),
+	CONSTRAINT FK_LidRepetitie_Repetitie
+		FOREIGN KEY(repetitieId)
+			REFERENCES MUZ.Repetitie(id)
+);
+
 CREATE TABLE MUZ.GroepRepetitie
 (
 	id				int			IDENTITY(1,1),
@@ -291,6 +308,21 @@ INSERT INTO MUZ.Optreden
 			('Meiavond', 10),
 			('Speculaasfeesten', 14),
 			('Speculaasfeesten', 16);
+
+CREATE TABLE MUZ.LidOptreden
+(
+	id				int			IDENTITY(1,1),
+	lidId			int			NOT NULL,
+	optredenId		int			NOT NULL,
+	CONSTRAINT PK_LidOptreden
+		PRIMARY KEY (id),
+	CONSTRAINT FK_LidOptreden_Lid
+		FOREIGN KEY(lidId)
+			REFERENCES MUZ.Lid(id),
+	CONSTRAINT FK_LidOptreden_Optreden
+		FOREIGN KEY(optredenId)
+			REFERENCES MUZ.Optreden(id)
+);
 
 CREATE TABLE MUZ.GroepOptreden
 (

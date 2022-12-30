@@ -19,3 +19,4 @@
 <p>Seventeenth Commit: UpdateBandlid afgewerkt</p>
 <p>Eightteenth Commit: DeleteInstrumentFromBandlid en DeleteGroepFromBandlid probeersel (not ok)</p>
 <p>Nineteenth Commit: Ervoor gezorgd dat als InstrumentVanBandlid of GroepVanBandlid al bestaat dat deze niet terug word toegevoegd, AddInstrumentBandlid en AddGroepBandlid nu volledig in orde</p>
+<p>Twentieth Commit: Foutmelding toegevoegd + LidRepetitie en LidOptreden aangemaakt voor Database operations te kunnen uitvoeren </p>

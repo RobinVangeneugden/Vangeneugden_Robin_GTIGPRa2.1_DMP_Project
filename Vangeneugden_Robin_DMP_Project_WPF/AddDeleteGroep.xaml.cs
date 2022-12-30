@@ -41,14 +41,36 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseOperations.AddGroepVanBandlid(_lidID, ((Groep)lbGroepen.SelectedItem).id);
-            lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+            if (lbGroepen.SelectedItem != null)
+            {
+                DatabaseOperations.AddGroepVanBandlid(_lidID, ((Groep)lbGroepen.SelectedItem).id);
+                lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+            }
+            else if (lbBandlid.SelectedItem != null)
+            {
+                MessageBox.Show("Een groep uit deze lijst kan niet toegevoegd worden!");
+            }
+            else
+            {
+                MessageBox.Show("Selecteer de toe te voegen groep!");
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseOperations.DeleteGroepVanBandlid(_lidID, ((Groep)lbBandlid.SelectedItem).id);
-            lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+            if (lbBandlid.SelectedItem != null)
+            {
+                DatabaseOperations.DeleteGroepVanBandlid(_lidID, ((Groep)lbBandlid.SelectedItem).id);
+                lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+            }
+            else if (lbGroepen.SelectedItem != null)
+            {
+                MessageBox.Show("Een groep uit deze lijst kan niet verwijderd worden!");
+            }
+            else
+            {
+                MessageBox.Show("Selecteer de toe te voegen groep!");
+            }
         }
     }
 }
