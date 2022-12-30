@@ -20,6 +20,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             _muziekbandDb.Open();
         }
 
+        //Ophalen van een lijst met Bandleden uit de database
         public static List<Lid> OphalenLeden()
         {
             Start();
@@ -29,6 +30,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return result;
         }
+
+        //Ophalen van een bandlid uit de database via zijn id
 
         public static Lid OphalenLidById(int lidID)
         {
@@ -40,6 +43,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        //Een bandlid toevoegen aan de database
         public static bool AddBandlid(Lid lid)
         {
 
@@ -78,6 +82,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return false;
         }
+
+        //De gegevens van een bandlid aanpassen en dit terugsturen naar de database
 
         public static bool UpdateBandlid(Lid lid)
         {
@@ -129,6 +135,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return false;
         }
 
+        //Een lijst met locaties ophalen uit de database
+
         public static List<Locatie> OphalenLocaties()
         {
             Start();
@@ -138,6 +146,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return result;
         }
+
+        //Een lijst met groen ophalen uit de database
 
         public static List<Groep> OphalenGroepen()
         {
@@ -149,6 +159,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        //Een lijst met groepen ophalen die verbonden is aan een bandlid aan de hand van die zijn id 
+
         public static List<Groep> OphalenGroepenVanBandlid(int lidID)
         {
             Start();
@@ -159,7 +171,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
-
+        //Een groep toevoegen aan de lijst van een bandlid
         public static bool AddGroepVanBandlid(int lidID, int groepID)
         {
 
@@ -189,6 +201,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return false;
         }
 
+        //Een groep verwijderen uit de lijst van een bandlid
         public static bool DeleteGroepVanBandlid(int lidID, int groepID)
         {
 
@@ -219,6 +232,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
         }
 
+        //Een lijst met repetities ophalen uit de database
 
         public static List<Repetitie> OphalenRepetities()
         {
@@ -230,6 +244,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        //Een lijst met repetities ophalen die verbonden is aan een bandlid aan de hand van die zijn id
         public static List<Repetitie> OphalenRepetitiesVanBandlid(int lidID)
         {
             Start();
@@ -239,6 +254,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return result;
         }
+
+        //Voeg een repetitie toe aan de lijst van een bandlid
 
         public static bool AddRepetitiesVanBandlid(int lidID, int repetitieID)
         {
@@ -269,6 +286,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return false;
         }
 
+        //Een repetitie verwijderen uit de lijst van een bandlid
+
         public static bool DeleteRepetitieVanBandlid(int lidID, int repetitieID)
         {
 
@@ -298,6 +317,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
         }
 
+        //Een lijst met optredens ophalen
+
         public static List<Optreden> OphalenOptredens()
         {
             Start();
@@ -308,6 +329,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        //Een lijst met optredens ophalen verbonden aan de id van een bandlid
         public static List<Optreden> OphalenOptredensVanBandlid(int lidID)
         {
             Start();
@@ -317,6 +339,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return result;
         }
+
+        //Een optreden toevoegen aan een bandlid
 
         public static bool AddOptredensVanBandlid(int lidID, int optredenID)
         {
@@ -347,6 +371,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return false;
         }
 
+        //Een optreden verwijderen uit de lijst van een bandlid
         public static bool DeleteOptredenVanBandlid(int lidID, int optredenID)
         {
 
@@ -376,6 +401,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
         }
 
+        //Een lijst van instrumenten ophalen uit de database
+
         public static List<Instrument> OphalenInstrumenten()
         {
             Start();
@@ -385,6 +412,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return result;
         }
+
+        //Een lijst van instrumenten ophalen die verbonden is aan de id van een bandlid
 
         public static List<Instrument> OphalenInstrumentenVanBandlid(int lidID)
         {
@@ -397,6 +426,7 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
             return result;
         }
 
+        //Een instrument toevoegen aan de lijst van een bandlid
         public static bool AddInstrumentVanBandlid(int lidID, int instrumentID)
         {
             
@@ -425,6 +455,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
             return false;
         }
+
+        //Een instrument verwijderen uit de lijst van een bandlid
         public static bool DeleteInstrumentVanBandlid(int lidID, int instrumentID)
         {
 
@@ -453,6 +485,8 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
 
 
         }
+
+        //Een bandlid volledig verwijderen uit de database
 
         public static bool DeleteBandlid(int lidID)
         {
