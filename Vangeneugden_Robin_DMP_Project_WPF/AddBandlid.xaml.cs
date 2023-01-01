@@ -85,9 +85,9 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             {
                 fout += "Bandlidnr is een verplicht in te vullen veld!" + Environment.NewLine;
             }
-            if (!int.TryParse(txtBandlidnr.Text, out int bandlidnr))
+            if (!int.TryParse(txtBandlidnr.Text, out int bandlidnr) || bandlidnr < 1)
             {
-                fout += "Bandlidnr moet nummeriek zijn!" + Environment.NewLine;
+                fout += "Bandlidnr moet nummeriek zijn en groter zijn als 0!" + Environment.NewLine;
             }
             if (string.IsNullOrEmpty(txtVoornaam.Text))
             {
