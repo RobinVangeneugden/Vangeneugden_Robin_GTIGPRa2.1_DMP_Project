@@ -21,3 +21,4 @@
 <p>Nineteenth Commit: Ervoor gezorgd dat als InstrumentVanBandlid of GroepVanBandlid al bestaat dat deze niet terug word toegevoegd, AddInstrumentBandlid en AddGroepBandlid nu volledig in orde</p>
 <p>Twentieth Commit: Foutmelding toegevoegd + LidRepetitie en LidOptreden aangemaakt voor Database operations te kunnen uitvoeren </p>
 <p>Twenty-first Commit: Uitleg toegevoegd aan Database operations en het verwijderen van een concert of repetitie uit de lijst van het bandlid lukt. Verwijderen van een instrument of groep werkt nog steeds niet</p>
+<p>Twenty-second Commit: Partials aangemaakt</p>

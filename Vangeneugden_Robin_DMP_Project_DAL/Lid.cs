@@ -48,10 +48,5 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
         public virtual ICollection<LidOptreden> LidOptreden { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LidRepetitie> LidRepetitie { get; set; }
-
-        public override string ToString()
-        {
-            return voornaam + " " + familienaam;
-        }
     }
 }

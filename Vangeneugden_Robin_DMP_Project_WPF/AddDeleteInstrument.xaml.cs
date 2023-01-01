@@ -43,6 +43,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             {
                 DatabaseOperations.AddInstrumentVanBandlid(_lidID, ((Instrument)lbInstrument.SelectedItem).id);
                 lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
+                MessageBox.Show($"{((Instrument)lbInstrument.SelectedItem).naam} is toegevoegd aan de lijst van {_mainWindow.cmbBandlid.Text}!", "Instrument Toevoegen", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if (lbBandlid.SelectedItem != null)
             {
@@ -66,7 +67,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
                 else
                 {
                     DatabaseOperations.DeleteInstrumentVanBandlid(_lidID, ((Instrument)lbBandlid.SelectedItem).id);
-                    MessageBox.Show("Instrument is succesvol verwijderd!", "Instrument Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"{((Instrument)lbBandlid.SelectedItem).naam} is succesvol verwijderd uit de lijst van {_mainWindow.cmbBandlid.Text}!", "Instrument Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
                     lbBandlid.ItemsSource = DatabaseOperations.OphalenInstrumentenVanBandlid(_lidID);
                 }
             }

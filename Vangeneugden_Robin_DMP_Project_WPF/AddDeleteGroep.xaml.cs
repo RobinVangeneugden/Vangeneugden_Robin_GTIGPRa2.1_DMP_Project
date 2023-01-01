@@ -45,6 +45,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             {
                 DatabaseOperations.AddGroepVanBandlid(_lidID, ((Groep)lbGroepen.SelectedItem).id);
                 lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+                MessageBox.Show($"{((Groep)lbGroepen.SelectedItem).naam} is toegevoegd aan de lijst van {_mainWindow.cmbBandlid.Text}!", "Groep Toevoegen", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if (lbBandlid.SelectedItem != null)
             {
@@ -60,8 +61,16 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
         {
             if (lbBandlid.SelectedItem != null)
             {
-                DatabaseOperations.DeleteGroepVanBandlid(_lidID, ((Groep)lbBandlid.SelectedItem).id);
-                lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+                if (MessageBox.Show("Wil je deze groep uit de lijst verwijderen?", "Groep verwijderen?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                    MessageBox.Show("Keep playing!");
+                }
+                else
+                {
+                    DatabaseOperations.DeleteGroepVanBandlid(_lidID, ((Groep)lbBandlid.SelectedItem).id);
+                    MessageBox.Show($"{((Groep)lbBandlid.SelectedItem).naam} is succesvol verwijderd uit de lijst van {_mainWindow.cmbBandlid.Text}!", "Groep Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
+                    lbBandlid.ItemsSource = DatabaseOperations.OphalenGroepenVanBandlid(_lidID);
+                }
             }
             else if (lbGroepen.SelectedItem != null)
             {
@@ -69,7 +78,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             }
             else
             {
-                MessageBox.Show("Selecteer de toe te voegen groep!");
+                MessageBox.Show("Selecteer de te verwijderen groep!");
             }
         }
     }

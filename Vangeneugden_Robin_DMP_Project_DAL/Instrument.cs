@@ -29,10 +29,5 @@ namespace Vangeneugden_Robin_DMP_Project_DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LidInstrument> LidInstrument { get; set; }
-
-        public override string ToString()
-        {
-            return naam;
-        }
     }
 }

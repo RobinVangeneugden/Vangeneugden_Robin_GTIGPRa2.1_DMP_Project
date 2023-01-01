@@ -43,6 +43,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             {
                 DatabaseOperations.AddRepetitiesVanBandlid(_lidID, ((Repetitie)lbRepetitie.SelectedItem).id);
                 lbBandlid.ItemsSource = DatabaseOperations.OphalenRepetitiesVanBandlid(_lidID);
+                MessageBox.Show($"{((Repetitie)lbRepetitie.SelectedItem).omschrijving} is toegevoegd aan de lijst van {_mainWindow.cmbBandlid.Text}!", "Repetitie Toevoegen", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if (lbBandlid.SelectedItem != null)
             {
@@ -65,7 +66,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
                 else
                 {
                     DatabaseOperations.DeleteRepetitieVanBandlid(_lidID, ((Repetitie)lbBandlid.SelectedItem).id);
-                    MessageBox.Show("De repetitie is succesvol verwijderd!", "Repetitie Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"{((Repetitie)lbBandlid.SelectedItem).omschrijving} is succesvol verwijderd uit de lijst van {_mainWindow.cmbBandlid.Text}!", "Repetitie Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
                     lbBandlid.ItemsSource = DatabaseOperations.OphalenRepetitiesVanBandlid(_lidID);
                 }
             }

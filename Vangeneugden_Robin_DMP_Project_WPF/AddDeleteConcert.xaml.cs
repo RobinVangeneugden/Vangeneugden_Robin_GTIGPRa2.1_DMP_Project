@@ -43,6 +43,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
             {
                 DatabaseOperations.AddOptredensVanBandlid(_lidID, ((Optreden)lbConcert.SelectedItem).id);
                 lbBandlid.ItemsSource = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
+                MessageBox.Show($"{((Optreden)lbConcert.SelectedItem).omschrijving} is toegevoegd aan de lijst van {_mainWindow.cmbBandlid.Text}!", "Optreden Toevoegen", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if (lbBandlid.SelectedItem != null)
             {
@@ -65,7 +66,7 @@ namespace Vangeneugden_Robin_DMP_Project_WPF
                 else
                 {
                     DatabaseOperations.DeleteOptredenVanBandlid(_lidID, ((Optreden)lbBandlid.SelectedItem).id);
-                    MessageBox.Show("Het optreden is succesvol verwijderd!", "Optreden Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"{((Optreden)lbBandlid.SelectedItem).omschrijving} is succesvol verwijderd uit de lijst van {_mainWindow.cmbBandlid.Text}!", "Optreden Verwijderd", MessageBoxButton.OK, MessageBoxImage.Information);
                     lbBandlid.ItemsSource = DatabaseOperations.OphalenOptredensVanBandlid(_lidID);
                 }
             }

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasisKlasse.cs" />
     <Compile Include="DatabaseConnectie.cs" />
     <Compile Include="DatabaseOperations.cs" />
     <Compile Include="Groep.cs">
@@ -103,6 +104,12 @@
     <Compile Include="Optreden.cs">
       <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Partials\Groep.cs" />
+    <Compile Include="Partials\Instrument.cs" />
+    <Compile Include="Partials\Lid.cs" />
+    <Compile Include="Partials\Locatie.cs" />
+    <Compile Include="Partials\Optreden.cs" />
+    <Compile Include="Partials\Repetitie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repetitie.cs">
       <DependentUpon>MuziekbandBeheerModel.tt</DependentUpon>
